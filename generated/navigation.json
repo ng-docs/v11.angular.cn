@@ -17,7 +17,7 @@
       "title": "会议"
     },
     {
-      "url": "https://blog.wangke.io/",
+      "url": "https://blog.ralph.wang",
       "title": "译者博客",
       "external": true,
       "tooltip": "译者汪志成的博客，包括翻译文章和原创文章"
@@ -1190,23 +1190,23 @@
   "docVersions": [
     {
       "title": "v10",
-      "url": "https://v10.angular.io/"
+      "url": "https://v10.angular.cn/"
     },
     {
       "title": "v9",
-      "url": "https://v9.angular.io/"
+      "url": "https://v9.angular.cn/"
     },
     {
       "title": "v8",
-      "url": "https://v8.angular.io/"
+      "url": "https://v8.angular.cn/"
     },
     {
       "title": "v7",
-      "url": "https://v7.angular.io/"
+      "url": "https://v7.angular.cn/"
     },
     {
       "title": "v6",
-      "url": "https://v6.angular.io/"
+      "url": "https://v6.angular.cn/"
     },
     {
       "title": "v5",
@@ -1218,7 +1218,7 @@
     },
     {
       "title": "v2",
-      "url": "https://v2.angular.io/"
+      "url": "https://v2.angular.cn/"
     }
   ],
   "__versionInfo": {
@@ -1233,14 +1233,14 @@
     "patch": 0,
     "prerelease": [
       "build",
-      "286"
+      "156"
     ],
-    "build": "sha.176d9977",
-    "version": "11.1.0-build.286",
+    "build": "sha.97f58fde",
+    "version": "11.1.0-build.156",
     "codeName": "snapshot",
     "isSnapshot": true,
-    "full": "11.1.0-build.286+sha.176d9977",
+    "full": "11.1.0-build.156+sha.97f58fde",
     "branch": "master",
-    "commitSHA": "176d9977a4c356b027515337ad309545a65cab6b"
+    "commitSHA": "97f58fdef20bc3944d0940f2e2c8ef3cc23cdea2"
   }
 }
