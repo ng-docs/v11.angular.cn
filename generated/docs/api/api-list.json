@@ -1441,7 +1441,7 @@
         "title": "ANALYZE_FOR_ENTRY_COMPONENTS",
         "path": "api/core/ANALYZE_FOR_ENTRY_COMPONENTS",
         "docType": "const",
-        "stability": "deprecated",
+        "stability": "stable",
         "securityRisk": false
       },
       {
@@ -2305,7 +2305,7 @@
         "title": "ReflectiveInjector",
         "path": "api/core/ReflectiveInjector",
         "docType": "class",
-        "stability": "deprecated",
+        "stability": "stable",
         "securityRisk": false
       },
       {
