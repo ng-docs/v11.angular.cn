@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1612708025834,
+  "timestamp": 1612781362336,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -1981,10 +1981,10 @@
     "/generated/docs/cli/doc.json": "b248369692e9c8439cb37f0174c7b40303484833",
     "/generated/docs/cli/e2e.json": "f46c14702a3ec7c1b55893eff979c5943ca73f15",
     "/generated/docs/cli/extract-i18n.json": "8b6299b5b7f50e48a5a96c727882c8b608e57eff",
-    "/generated/docs/cli/generate.json": "f017f12561a6d0f4c7c3a220ce29e7dabead1519",
+    "/generated/docs/cli/generate.json": "aacecada12b9ccc263f7998be2e1e83da7d373d1",
     "/generated/docs/cli/help.json": "a9a10acc1bed6252ebb4775f662080778b1d0af3",
     "/generated/docs/cli/lint.json": "8bf326eaf27f9c3399bdc3615307856fe24e57b7",
-    "/generated/docs/cli/new.json": "45946a73b3203b1095fad151e1324a78b6b297f4",
+    "/generated/docs/cli/new.json": "8951c5b7950eaaba4e335137fa6967c8b1763a6d",
     "/generated/docs/cli/run.json": "7f104b4ee5130a47db95b144fdb4b423e19e4304",
     "/generated/docs/cli/serve.json": "8fbe1eeb74e82f0f338bd3e9c776eb78eb002aba",
     "/generated/docs/cli/test.json": "0c0edb0a45093adce303c4045fb6d2c7d3f09896",
@@ -2605,7 +2605,7 @@
     "/generated/images/marketing/home/responsive-framework.svg": "464305c2e23be8cfa677aa7c5b34e923c17c9591",
     "/generated/images/marketing/home/speed-performance.svg": "d67c709de15f5fb41617b1831f1c518e3ca2db74",
     "/generated/images/translations/cn/mail-dev-rel.gif": "37548a380a03319e2675ccec5de5314597c62f93",
-    "/generated/navigation.json": "a6dc1dc2633f63154ee5073066c42861b599187e",
+    "/generated/navigation.json": "b4943157c750697bdd3b60fc58e73919f978976b",
     "/generated/resources.json": "71b50ceadd1a0ed34111b88d75b1d83548954852",
     "/index.html": "fcb00d1d217d7b8507f0b50a343eace3dcd5fb3b",
     "/live-example-live-example-module-es2015.b47da3ef78637f503121.js": "a6020b65985e347f2b8a2f51a0b5106541742c70",
