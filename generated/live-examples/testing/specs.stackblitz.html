@@ -428,52 +428,7 @@ can be found in the LICENSE file at https://angular.io/license
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
--->"><input type="hidden" name="files[src/app/about/about.component.spec.ts]" value="import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AboutComponent } from './about.component';
-import { HighlightDirective } from '../shared/highlight.directive';
-
-let fixture: ComponentFixture<AboutComponent>;
-
-describe('AboutComponent (highlightDirective)', () => {
-  beforeEach(() => {
-    fixture = TestBed.configureTestingModule({
-      declarations: [ AboutComponent, HighlightDirective ],
-      schemas:      [ NO_ERRORS_SCHEMA ]
-    })
-    .createComponent(AboutComponent);
-    fixture.detectChanges(); // initial binding
-  });
-
-  it('should have skyblue <h2>', () => {
-    const h2: HTMLElement = fixture.nativeElement.querySelector('h2');
-    const bgColor = h2.style.backgroundColor;
-    expect(bgColor).toBe('skyblue');
-  });
-});
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/about/about.component.ts]" value="import { Component } from '@angular/core';
-@Component({
-  template: `
-  <h2 highlight=&quot;skyblue&quot;>About</h2>
-  <h3>Quote of the day:</h3>
-  <twain-quote></twain-quote>
-  `
-})
-export class AboutComponent { }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app-initial.component.spec.ts]" value="import { TestBed, waitForAsync } from '@angular/core/testing';
+-->"><input type="hidden" name="files[src/app/app-initial.component.spec.ts]" value="import { TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app-initial.component';
 /*
 import { AppComponent } from './app.component';
@@ -975,6 +930,103 @@ import { InMemoryDataService } from './in-memory-data.service';
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/dummy.module.ts]" value="// These unused NgModules keep the Angular Language Service happy.
+// The AppModule registers the final versions of these components
+import { NgModule } from '@angular/core';
+
+import { AppComponent as app_initial } from './app-initial.component';
+@NgModule({ declarations: [ app_initial ] })
+export class AppModuleInitial {}
+
+import { BannerComponent as bc_initial } from './banner/banner-initial.component';
+@NgModule({ declarations: [ bc_initial ] })
+export class BannerModuleInitial {}
+
+import { BannerComponent as bc_external } from './banner/banner-external.component';
+@NgModule({ declarations: [ bc_external ] })
+export class BannerModuleExternal {}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/in-memory-data.service.ts]" value="import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { QUOTES } from './twain/twain.data';
+
+// Adjust to reduce number of quotes
+const maxQuotes = Infinity; // 0;
+
+/** Create in-memory database of heroes and quotes */
+export class InMemoryDataService implements InMemoryDbService {
+  createDb() {
+    const heroes = [
+      { id: 11, name: 'Dr Nice' },
+      { id: 12, name: 'Narco' },
+      { id: 13, name: 'Bombasto' },
+      { id: 14, name: 'Celeritas' },
+      { id: 15, name: 'Magneta' },
+      { id: 16, name: 'RubberMan' },
+      { id: 17, name: 'Dynama' },
+      { id: 18, name: 'Dr IQ' },
+      { id: 19, name: 'Magma' },
+      { id: 20, name: 'Tornado' }
+    ];
+
+    return { heroes, quotes: QUOTES.slice(0, maxQuotes) };
+  }
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/about/about.component.spec.ts]" value="import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { AboutComponent } from './about.component';
+import { HighlightDirective } from '../shared/highlight.directive';
+
+let fixture: ComponentFixture<AboutComponent>;
+
+describe('AboutComponent (highlightDirective)', () => {
+  beforeEach(() => {
+    fixture = TestBed.configureTestingModule({
+      declarations: [ AboutComponent, HighlightDirective ],
+      schemas:      [ NO_ERRORS_SCHEMA ]
+    })
+    .createComponent(AboutComponent);
+    fixture.detectChanges(); // initial binding
+  });
+
+  it('should have skyblue <h2>', () => {
+    const h2: HTMLElement = fixture.nativeElement.querySelector('h2');
+    const bgColor = h2.style.backgroundColor;
+    expect(bgColor).toBe('skyblue');
+  });
+});
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/about/about.component.ts]" value="import { Component } from '@angular/core';
+@Component({
+  template: `
+  <h2 highlight=&quot;skyblue&quot;>About</h2>
+  <h3>Quote of the day:</h3>
+  <twain-quote></twain-quote>
+  `
+})
+export class AboutComponent { }
 
 
 /*
@@ -3187,27 +3239,6 @@ export class DemoModule { }
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/dummy.module.ts]" value="// These unused NgModules keep the Angular Language Service happy.
-// The AppModule registers the final versions of these components
-import { NgModule } from '@angular/core';
-
-import { AppComponent as app_initial } from './app-initial.component';
-@NgModule({ declarations: [ app_initial ] })
-export class AppModuleInitial {}
-
-import { BannerComponent as bc_initial } from './banner/banner-initial.component';
-@NgModule({ declarations: [ bc_initial ] })
-export class BannerModuleInitial {}
-
-import { BannerComponent as bc_external } from './banner/banner-external.component';
-@NgModule({ declarations: [ bc_external ] })
-export class BannerModuleExternal {}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="files[src/app/hero/hero-detail.component.no-testbed.spec.ts]" value="import { asyncData, ActivatedRouteStub } from '../../testing';
 
 import { HeroDetailComponent } from './hero-detail.component';
@@ -3948,37 +3979,6 @@ export class HeroModule { }
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/in-memory-data.service.ts]" value="import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { QUOTES } from './twain/twain.data';
-
-// Adjust to reduce number of quotes
-const maxQuotes = Infinity; // 0;
-
-/** Create in-memory database of heroes and quotes */
-export class InMemoryDataService implements InMemoryDbService {
-  createDb() {
-    const heroes = [
-      { id: 11, name: 'Dr Nice' },
-      { id: 12, name: 'Narco' },
-      { id: 13, name: 'Bombasto' },
-      { id: 14, name: 'Celeritas' },
-      { id: 15, name: 'Magneta' },
-      { id: 16, name: 'RubberMan' },
-      { id: 17, name: 'Dynama' },
-      { id: 18, name: 'Dr IQ' },
-      { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' }
-    ];
-
-    return { heroes, quotes: QUOTES.slice(0, maxQuotes) };
-  }
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="files[src/app/model/hero.service.spec.ts]" value="import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 // Other imports
@@ -4310,274 +4310,6 @@ can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="files[src/app/model/index.ts]" value="export * from './hero';
 export * from './hero.service';
 export * from './user.service';
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/model/testing/http-client.spec.ts]" value="// Http testing module and mocking controller
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-
-// Other imports
-import { TestBed } from '@angular/core/testing';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-
-import { HttpHeaders } from '@angular/common/http';
-
-interface Data {
-  name: string;
-}
-
-const testUrl = '/data';
-
-describe('HttpClient testing', () => {
-  let httpClient: HttpClient;
-  let httpTestingController: HttpTestingController;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ]
-    });
-
-    // Inject the http service and test controller for each test
-    httpClient = TestBed.inject(HttpClient);
-    httpTestingController = TestBed.inject(HttpTestingController);
-  });
-  afterEach(() => {
-    // After every test, assert that there are no more pending requests.
-    httpTestingController.verify();
-  });
-  /// Tests begin ///
-  it('can test HttpClient.get', () => {
-    const testData: Data = {name: 'Test Data'};
-
-    // Make an HTTP GET request
-    httpClient.get<Data>(testUrl)
-      .subscribe(data =>
-        // When observable resolves, result should match test data
-        expect(data).toEqual(testData)
-      );
-
-    // The following `expectOne()` will match the request's URL.
-    // If no requests or multiple requests matched that URL
-    // `expectOne()` would throw.
-    const req = httpTestingController.expectOne('/data');
-
-    // Assert that the request is a GET.
-    expect(req.request.method).toEqual('GET');
-
-    // Respond with mock data, causing Observable to resolve.
-    // Subscribe callback asserts that correct data was returned.
-    req.flush(testData);
-
-    // Finally, assert that there are no outstanding requests.
-    httpTestingController.verify();
-  });
-  it('can test HttpClient.get with matching header', () => {
-    const testData: Data = {name: 'Test Data'};
-
-    // Make an HTTP GET request with specific header
-    httpClient.get<Data>(testUrl, {
-        headers: new HttpHeaders({Authorization: 'my-auth-token'})
-      })
-      .subscribe(data =>
-        expect(data).toEqual(testData)
-      );
-
-      // Find request with a predicate function.
-    // Expect one request with an authorization header
-    const req = httpTestingController.expectOne(
-      request => request.headers.has('Authorization')
-    );
-    req.flush(testData);
-  });
-
-  it('can test multiple requests', () => {
-    const testData: Data[] = [
-      { name: 'bob' }, { name: 'carol' },
-      { name: 'ted' }, { name: 'alice' }
-    ];
-
-    // Make three requests in a row
-    httpClient.get<Data[]>(testUrl)
-      .subscribe(d => expect(d.length).toEqual(0, 'should have no data'));
-
-    httpClient.get<Data[]>(testUrl)
-      .subscribe(d => expect(d).toEqual([testData[0]], 'should be one element array'));
-
-    httpClient.get<Data[]>(testUrl)
-      .subscribe(d => expect(d).toEqual(testData, 'should be expected data'));
-
-    // get all pending requests that match the given URL
-    const requests = httpTestingController.match(testUrl);
-    expect(requests.length).toEqual(3);
-
-    // Respond to each request with different results
-    requests[0].flush([]);
-    requests[1].flush([testData[0]]);
-    requests[2].flush(testData);
-  });
-
-  it('can test for 404 error', () => {
-    const emsg = 'deliberate 404 error';
-
-    httpClient.get<Data[]>(testUrl).subscribe(
-      data => fail('should have failed with the 404 error'),
-      (error: HttpErrorResponse) => {
-        expect(error.status).toEqual(404, 'status');
-        expect(error.error).toEqual(emsg, 'message');
-      }
-    );
-
-    const req = httpTestingController.expectOne(testUrl);
-
-    // Respond with mock error
-    req.flush(emsg, { status: 404, statusText: 'Not Found' });
-  });
-
-  it('can test for network error', () => {
-    const emsg = 'simulated network error';
-
-    httpClient.get<Data[]>(testUrl).subscribe(
-      data => fail('should have failed with the network error'),
-      (error: HttpErrorResponse) => {
-        expect(error.error.message).toEqual(emsg, 'message');
-      }
-    );
-
-    const req = httpTestingController.expectOne(testUrl);
-
-    // Create mock ErrorEvent, raised when something goes wrong at the network level.
-    // Connection timeout, DNS error, offline, etc
-    const errorEvent = new ErrorEvent('so sad', {
-      message: emsg,
-      // The rest of this is optional and not used.
-      // Just showing that you could provide this too.
-      filename: 'HeroService.ts',
-      lineno: 42,
-      colno: 21
-    });
-
-    // Respond with mock error
-    req.error(errorEvent);
-  });
-
-  it('httpTestingController.verify should fail if HTTP response not simulated', () => {
-    // Sends request
-    httpClient.get('some/api').subscribe();
-
-    // verify() should fail because haven't handled the pending request.
-    expect(() => httpTestingController.verify()).toThrow();
-
-    // Now get and flush the request so that afterEach() doesn't fail
-    const req = httpTestingController.expectOne('some/api');
-    req.flush(null);
-  });
-
-  // Proves that verify in afterEach() really would catch error
-  // if test doesn't simulate the HTTP response.
-  //
-  // Must disable this test because can't catch an error in an afterEach().
-  // Uncomment if you want to confirm that afterEach() does the job.
-  // it('afterEach() should fail when HTTP response not simulated',() => {
-  //   // Sends request which is never handled by this test
-  //   httpClient.get('some/api').subscribe();
-  // });
-});
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/model/testing/index.ts]" value="export * from './test-hero.service';
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/model/testing/test-hero.service.ts]" value="import { Injectable } from '@angular/core';
-
-import { Observable } from 'rxjs';
-import { asyncData } from '../../../testing';
-
-import { map } from 'rxjs/operators';
-
-// re-export for tester convenience
-export { Hero } from '../hero';
-export { HeroService } from '../hero.service';
-export { getTestHeroes } from './test-heroes';
-
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
-import { getTestHeroes } from './test-heroes';
-
-@Injectable()
-/**
- * FakeHeroService pretends to make real http requests.
- * implements only as much of HeroService as is actually consumed by the app
- */
-export class TestHeroService extends HeroService {
-
-  constructor() {
-    super(null);
-  }
-
-  heroes = getTestHeroes();
-  lastResult: Observable<any>; // result from last method call
-
-  addHero(hero: Hero): Observable<Hero> {
-    throw new Error('Method not implemented.');
-  }
-
-  deleteHero(hero: number | Hero): Observable<Hero> {
-    throw new Error('Method not implemented.');
-  }
-
-  getHeroes(): Observable<Hero[]> {
-    return this.lastResult = asyncData(this.heroes);
-  }
-
-  getHero(id: number | string): Observable<Hero> {
-    if (typeof id === 'string') {
-      id = parseInt(id, 10);
-    }
-    const hero = this.heroes.find(h => h.id === id);
-    return this.lastResult = asyncData(hero);
-  }
-
-  updateHero(hero: Hero): Observable<Hero> {
-    return this.lastResult = this.getHero(hero.id).pipe(
-      map(h => {
-        if (h) {
-          return Object.assign(h, hero);
-        }
-        throw new Error(`Hero ${hero.id} not found`);
-      })
-    );
-  }
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/model/testing/test-heroes.ts]" value="import { Hero } from '../hero';
-
-/** return fresh array of test heroes */
-export function getTestHeroes(): Hero[] {
-  return [
-    {id: 41, name: 'Bob' },
-    {id: 42, name: 'Carol' },
-    {id: 43, name: 'Ted' },
-    {id: 44, name: 'Alice' },
-    {id: 45, name: 'Speedy' },
-    {id: 46, name: 'Stealthy' }
-  ];
-}
 
 
 /*
@@ -5384,6 +5116,274 @@ export class WelcomeComponent implements OnInit {
     this.welcome = this.userService.isLoggedIn ?
       'Welcome, ' + this.userService.user.name : 'Please log in.';
   }
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/model/testing/http-client.spec.ts]" value="// Http testing module and mocking controller
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
+// Other imports
+import { TestBed } from '@angular/core/testing';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
+import { HttpHeaders } from '@angular/common/http';
+
+interface Data {
+  name: string;
+}
+
+const testUrl = '/data';
+
+describe('HttpClient testing', () => {
+  let httpClient: HttpClient;
+  let httpTestingController: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ]
+    });
+
+    // Inject the http service and test controller for each test
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
+  });
+  afterEach(() => {
+    // After every test, assert that there are no more pending requests.
+    httpTestingController.verify();
+  });
+  /// Tests begin ///
+  it('can test HttpClient.get', () => {
+    const testData: Data = {name: 'Test Data'};
+
+    // Make an HTTP GET request
+    httpClient.get<Data>(testUrl)
+      .subscribe(data =>
+        // When observable resolves, result should match test data
+        expect(data).toEqual(testData)
+      );
+
+    // The following `expectOne()` will match the request's URL.
+    // If no requests or multiple requests matched that URL
+    // `expectOne()` would throw.
+    const req = httpTestingController.expectOne('/data');
+
+    // Assert that the request is a GET.
+    expect(req.request.method).toEqual('GET');
+
+    // Respond with mock data, causing Observable to resolve.
+    // Subscribe callback asserts that correct data was returned.
+    req.flush(testData);
+
+    // Finally, assert that there are no outstanding requests.
+    httpTestingController.verify();
+  });
+  it('can test HttpClient.get with matching header', () => {
+    const testData: Data = {name: 'Test Data'};
+
+    // Make an HTTP GET request with specific header
+    httpClient.get<Data>(testUrl, {
+        headers: new HttpHeaders({Authorization: 'my-auth-token'})
+      })
+      .subscribe(data =>
+        expect(data).toEqual(testData)
+      );
+
+      // Find request with a predicate function.
+    // Expect one request with an authorization header
+    const req = httpTestingController.expectOne(
+      request => request.headers.has('Authorization')
+    );
+    req.flush(testData);
+  });
+
+  it('can test multiple requests', () => {
+    const testData: Data[] = [
+      { name: 'bob' }, { name: 'carol' },
+      { name: 'ted' }, { name: 'alice' }
+    ];
+
+    // Make three requests in a row
+    httpClient.get<Data[]>(testUrl)
+      .subscribe(d => expect(d.length).toEqual(0, 'should have no data'));
+
+    httpClient.get<Data[]>(testUrl)
+      .subscribe(d => expect(d).toEqual([testData[0]], 'should be one element array'));
+
+    httpClient.get<Data[]>(testUrl)
+      .subscribe(d => expect(d).toEqual(testData, 'should be expected data'));
+
+    // get all pending requests that match the given URL
+    const requests = httpTestingController.match(testUrl);
+    expect(requests.length).toEqual(3);
+
+    // Respond to each request with different results
+    requests[0].flush([]);
+    requests[1].flush([testData[0]]);
+    requests[2].flush(testData);
+  });
+
+  it('can test for 404 error', () => {
+    const emsg = 'deliberate 404 error';
+
+    httpClient.get<Data[]>(testUrl).subscribe(
+      data => fail('should have failed with the 404 error'),
+      (error: HttpErrorResponse) => {
+        expect(error.status).toEqual(404, 'status');
+        expect(error.error).toEqual(emsg, 'message');
+      }
+    );
+
+    const req = httpTestingController.expectOne(testUrl);
+
+    // Respond with mock error
+    req.flush(emsg, { status: 404, statusText: 'Not Found' });
+  });
+
+  it('can test for network error', () => {
+    const emsg = 'simulated network error';
+
+    httpClient.get<Data[]>(testUrl).subscribe(
+      data => fail('should have failed with the network error'),
+      (error: HttpErrorResponse) => {
+        expect(error.error.message).toEqual(emsg, 'message');
+      }
+    );
+
+    const req = httpTestingController.expectOne(testUrl);
+
+    // Create mock ErrorEvent, raised when something goes wrong at the network level.
+    // Connection timeout, DNS error, offline, etc
+    const errorEvent = new ErrorEvent('so sad', {
+      message: emsg,
+      // The rest of this is optional and not used.
+      // Just showing that you could provide this too.
+      filename: 'HeroService.ts',
+      lineno: 42,
+      colno: 21
+    });
+
+    // Respond with mock error
+    req.error(errorEvent);
+  });
+
+  it('httpTestingController.verify should fail if HTTP response not simulated', () => {
+    // Sends request
+    httpClient.get('some/api').subscribe();
+
+    // verify() should fail because haven't handled the pending request.
+    expect(() => httpTestingController.verify()).toThrow();
+
+    // Now get and flush the request so that afterEach() doesn't fail
+    const req = httpTestingController.expectOne('some/api');
+    req.flush(null);
+  });
+
+  // Proves that verify in afterEach() really would catch error
+  // if test doesn't simulate the HTTP response.
+  //
+  // Must disable this test because can't catch an error in an afterEach().
+  // Uncomment if you want to confirm that afterEach() does the job.
+  // it('afterEach() should fail when HTTP response not simulated',() => {
+  //   // Sends request which is never handled by this test
+  //   httpClient.get('some/api').subscribe();
+  // });
+});
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/model/testing/index.ts]" value="export * from './test-hero.service';
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/model/testing/test-hero.service.ts]" value="import { Injectable } from '@angular/core';
+
+import { Observable } from 'rxjs';
+import { asyncData } from '../../../testing';
+
+import { map } from 'rxjs/operators';
+
+// re-export for tester convenience
+export { Hero } from '../hero';
+export { HeroService } from '../hero.service';
+export { getTestHeroes } from './test-heroes';
+
+import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
+import { getTestHeroes } from './test-heroes';
+
+@Injectable()
+/**
+ * FakeHeroService pretends to make real http requests.
+ * implements only as much of HeroService as is actually consumed by the app
+ */
+export class TestHeroService extends HeroService {
+
+  constructor() {
+    super(null);
+  }
+
+  heroes = getTestHeroes();
+  lastResult: Observable<any>; // result from last method call
+
+  addHero(hero: Hero): Observable<Hero> {
+    throw new Error('Method not implemented.');
+  }
+
+  deleteHero(hero: number | Hero): Observable<Hero> {
+    throw new Error('Method not implemented.');
+  }
+
+  getHeroes(): Observable<Hero[]> {
+    return this.lastResult = asyncData(this.heroes);
+  }
+
+  getHero(id: number | string): Observable<Hero> {
+    if (typeof id === 'string') {
+      id = parseInt(id, 10);
+    }
+    const hero = this.heroes.find(h => h.id === id);
+    return this.lastResult = asyncData(hero);
+  }
+
+  updateHero(hero: Hero): Observable<Hero> {
+    return this.lastResult = this.getHero(hero.id).pipe(
+      map(h => {
+        if (h) {
+          return Object.assign(h, hero);
+        }
+        throw new Error(`Hero ${hero.id} not found`);
+      })
+    );
+  }
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/model/testing/test-heroes.ts]" value="import { Hero } from '../hero';
+
+/** return fresh array of test heroes */
+export function getTestHeroes(): Hero[] {
+  return [
+    {id: 41, name: 'Bob' },
+    {id: 42, name: 'Carol' },
+    {id: 43, name: 'Ted' },
+    {id: 44, name: 'Alice' },
+    {id: 45, name: 'Speedy' },
+    {id: 46, name: 'Stealthy' }
+  ];
 }
 
 
