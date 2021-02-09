@@ -1233,14 +1233,14 @@
     "patch": 0,
     "prerelease": [
       "build",
-      "187"
+      "188"
     ],
-    "build": "sha.3cdf742d",
-    "version": "11.1.0-build.187",
+    "build": "sha.05dbbc16",
+    "version": "11.1.0-build.188",
     "codeName": "snapshot",
     "isSnapshot": true,
-    "full": "11.1.0-build.187+sha.3cdf742d",
+    "full": "11.1.0-build.188+sha.05dbbc16",
     "branch": "master",
-    "commitSHA": "3cdf742da20fdc50b98a45b52508a764a0b13b0a"
+    "commitSHA": "05dbbc16bfb3b5134ef183d323016e0237c29347"
   }
 }
