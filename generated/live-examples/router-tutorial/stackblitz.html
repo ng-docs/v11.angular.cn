@@ -1,5 +1,134 @@
 <html lang="en"><head></head><body>
-        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/app.component.html" target="_self"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
+        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/app.component.html" target="_self"><input type="hidden" name="files[src/app/app.component.ts]" value="import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'angular-router-sample';
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/app.module.ts]" value="import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
+import { CrisisListComponent } from './crisis-list/crisis-list.component';
+import { HeroesListComponent } from './heroes-list/heroes-list.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    CrisisListComponent,
+    HeroesListComponent,
+    PageNotFoundComponent
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot([
+      {path: 'crisis-list', component: CrisisListComponent},
+      {path: 'heroes-list', component: HeroesListComponent},
+      {path: '', redirectTo: '/heroes-list', pathMatch: 'full'},
+      {path: '**', component: PageNotFoundComponent}
+    ]),
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/crisis-list/crisis-list.component.ts]" value="import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-crisis-list',
+  templateUrl: './crisis-list.component.html',
+  styleUrls: ['./crisis-list.component.css']
+})
+export class CrisisListComponent {
+
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/heroes-list/heroes-list.component.ts]" value="import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-heroes-list',
+  templateUrl: './heroes-list.component.html',
+  styleUrls: ['./heroes-list.component.css']
+})
+export class HeroesListComponent {
+
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/page-not-found/page-not-found.component.ts]" value="import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-page-not-found',
+  templateUrl: './page-not-found.component.html',
+  styleUrls: ['./page-not-found.component.css']
+})
+export class PageNotFoundComponent {
+
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/environments/environment.prod.ts]" value="export const environment = {
+  production: true
+};
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/environments/environment.ts]" value="// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
+
+export const environment = {
+  production: false
+};
+
+/*
+ * For easier debugging in development mode, you can import the following file
+ * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
+ *
+ * This import should be commented out in production mode because it will have a negative impact
+ * on performance if an error is thrown.
+ */
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
@@ -87,130 +216,58 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.component.ts]" value="import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent {
-  title = 'angular-router-sample';
+*/"><input type="hidden" name="files[src/app/app.component.css]" value=".button {
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    cursor: pointer;
+    color: #666666;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+    outline: 0;
+}
+.activebutton {
+    box-shadow: inset 0px 1px 0px 0px #dcecfb;
+    background: linear-gradient(to bottom, #bddbfa 5%, #80b5ea 100%);
+    background-color: #bddbfa;
+    border-radius: 6px;
+    border: 1px solid #84bbf3;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #528ecc;
+    outline: 0;
 }
 
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/crisis-list/crisis-list.component.css]" value="
 
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.module.ts]" value="import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { CrisisListComponent } from './crisis-list/crisis-list.component';
-import { HeroesListComponent } from './heroes-list/heroes-list.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    CrisisListComponent,
-    HeroesListComponent,
-    PageNotFoundComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot([
-      {path: 'crisis-list', component: CrisisListComponent},
-      {path: 'heroes-list', component: HeroesListComponent},
-      {path: '', redirectTo: '/heroes-list', pathMatch: 'full'},
-      {path: '**', component: PageNotFoundComponent}
-    ]),
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-
+*/"><input type="hidden" name="files[src/app/heroes-list/heroes-list.component.css]" value="
 
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/environments/environment.prod.ts]" value="export const environment = {
-  production: true
-};
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/environments/environment.ts]" value="// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
-export const environment = {
-  production: false
-};
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/crisis-list/crisis-list.component.ts]" value="import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-crisis-list',
-  templateUrl: './crisis-list.component.html',
-  styleUrls: ['./crisis-list.component.css']
-})
-export class CrisisListComponent {
-
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/heroes-list/heroes-list.component.ts]" value="import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-heroes-list',
-  templateUrl: './heroes-list.component.html',
-  styleUrls: ['./heroes-list.component.css']
-})
-export class HeroesListComponent {
-
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/page-not-found/page-not-found.component.ts]" value="import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-page-not-found',
-  templateUrl: './page-not-found.component.html',
-  styleUrls: ['./page-not-found.component.css']
-})
-export class PageNotFoundComponent {
-
-}
-
+*/"><input type="hidden" name="files[src/app/page-not-found/page-not-found.component.css]" value="
 
 /*
 Copyright Google LLC. All Rights Reserved.
@@ -287,83 +344,7 @@ nav a.active {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.component.css]" value=".button {
-    box-shadow: inset 0px 1px 0px 0px #ffffff;
-    background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-    background-color: #ffffff;
-    border-radius: 6px;
-    border: 1px solid #dcdcdc;
-    display: inline-block;
-    cursor: pointer;
-    color: #666666;
-    font-family: Arial;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 6px 24px;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #ffffff;
-    outline: 0;
-}
-.activebutton {
-    box-shadow: inset 0px 1px 0px 0px #dcecfb;
-    background: linear-gradient(to bottom, #bddbfa 5%, #80b5ea 100%);
-    background-color: #bddbfa;
-    border-radius: 6px;
-    border: 1px solid #84bbf3;
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-family: Arial;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 6px 24px;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #528ecc;
-    outline: 0;
-}
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/crisis-list/crisis-list.component.css]" value="
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/heroes-list/heroes-list.component.css]" value="
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/page-not-found/page-not-found.component.css]" value="
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/index.html]" value="<!doctype html>
-<html lang=&quot;en&quot;>
-<head>
-  <meta charset=&quot;utf-8&quot;>
-  <title>Angular Router Sample</title>
-  <base href=&quot;/&quot;>
-  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
-  <link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot;>
-</head>
-<body>
-  <app-root></app-root>
-</body>
-</html>
-
-
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
--->"><input type="hidden" name="files[src/app/app.component.html]" value="<h1>Angular Router Sample</h1>
+*/"><input type="hidden" name="files[src/app/app.component.html]" value="<h1>Angular Router Sample</h1>
 <nav>
   <a class=&quot;button&quot; routerLink=&quot;/crisis-list&quot; routerLinkActive=&quot;activebutton&quot;>Crisis Center</a> |
   <a class=&quot;button&quot; routerLink=&quot;/heroes-list&quot; routerLinkActive=&quot;activebutton&quot;>Heroes</a>
@@ -406,6 +387,25 @@ Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 -->"><input type="hidden" name="files[src/app/page-not-found/page-not-found.component.html]" value="<h2>Page Not Found</h2>
 <p>We couldn't find that page! Not even with x-ray vision.</p>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->"><input type="hidden" name="files[src/index.html]" value="<!doctype html>
+<html lang=&quot;en&quot;>
+<head>
+  <meta charset=&quot;utf-8&quot;>
+  <title>Angular Router Sample</title>
+  <base href=&quot;/&quot;>
+  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
+  <link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot;>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
 
 
 <!-- 

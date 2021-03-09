@@ -1,5 +1,184 @@
 <html lang="en"><head></head><body>
-        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/app.component.ts" target="_self"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
+        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/app.component.ts" target="_self"><input type="hidden" name="files[src/app/animal.service.ts]" value="import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AnimalService {
+  emoji = '🐳';
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/app.component.ts]" value="import { Component } from '@angular/core';
+import { FlowerService } from './flower.service';
+import { AnimalService } from './animal.service';
+
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: [ './app.component.css' ]
+})
+export class AppComponent  {
+  constructor(public flower: FlowerService, public animal: AnimalService) {}
+}
+
+// When using @Host() together with @SkipSelf() in
+// child.component.ts for the AnimalService, add the
+// following viewProviders array to the @Component metadata:
+
+// viewProviders: [{ provide: AnimalService, useValue: { emoji: '🦔' } }]
+
+// So, the entire @ChildComponent() decorator and its
+// metadata should be as follows:
+
+// @Component({
+//   selector: 'app-root',
+//   templateUrl: './app.component.html',
+//   styleUrls: [ './app.component.css' ],
+//   viewProviders: [{ provide: AnimalService, useValue: { emoji: '🦔' } }]
+// })
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/app.module.ts]" value="import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+import { ChildComponent } from './child/child.component';
+import { InspectorComponent } from './inspector/inspector.component';
+
+@NgModule({
+  imports:      [ BrowserModule, FormsModule ],
+  declarations: [ AppComponent, ChildComponent, InspectorComponent ],
+  bootstrap:    [ AppComponent ],
+  providers: []
+})
+export class AppModule { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/child/child.component.ts]" value="import { Component, OnInit, Host, SkipSelf, Optional } from '@angular/core';
+import { FlowerService } from '../flower.service';
+import { AnimalService } from '../animal.service';
+
+@Component({
+  selector: 'app-child',
+  templateUrl: './child.component.html',
+  styleUrls: ['./child.component.css'],
+  // provide services
+  providers: [{ provide: FlowerService, useValue: { emoji: '🌻' } }],
+  viewProviders: [{ provide: AnimalService, useValue: { emoji: '🐶' } }]
+})
+
+export class ChildComponent {
+  // inject service
+  constructor( public flower: FlowerService, public animal: AnimalService) { }
+
+  // viewProviders ensures that only the view gets to see this.
+  // With the AnimalService in the viewProviders, the
+  // InspectorComponent doesn't get to see it because the
+  // inspector is in the content.
+
+
+  // constructor( public flower: FlowerService, @Optional() @Host()  public animal?: AnimalService) { }
+
+// Comment out the above constructor and alternately
+// uncomment the two following constructors to see the
+// effects of @Host() and @Host() + @SkipSelf().
+
+// constructor(
+//     @Host() public animal : AnimalService,
+//     @Host() @Optional() public flower ?: FlowerService) { }
+
+// constructor(
+//     @SkipSelf() @Host() public animal : AnimalService,
+//     @SkipSelf() @Host() @Optional() public flower ?: FlowerService) { }
+
+}
+
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/flower.service.ts]" value="import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FlowerService {
+  emoji = '🌺';
+}
+
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/inspector/inspector.component.ts]" value="import { Component } from '@angular/core';
+import { FlowerService } from '../flower.service';
+import { AnimalService } from '../animal.service';
+
+@Component({
+  selector: 'app-inspector',
+  templateUrl: './inspector.component.html',
+  styleUrls: ['./inspector.component.css']
+})
+export class InspectorComponent {
+  constructor(public flower: FlowerService, public animal: AnimalService) { }
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/environments/environment.prod.ts]" value="export const environment = {
+  production: true
+};
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/environments/environment.ts]" value="// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
+
+export const environment = {
+  production: false
+};
+
+/*
+ * For easier debugging in development mode, you can import the following file
+ * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
+ *
+ * This import should be commented out in production mode because it will have a negative impact
+ * on performance if an error is thrown.
+ */
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
@@ -87,180 +266,22 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/animal.service.ts]" value="import { Injectable } from '@angular/core';
+*/"><input type="hidden" name="files[src/app/app.component.css]" value="
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AnimalService {
-  emoji = '🐳';
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/child/child.component.css]" value=".container {
+  border: 1px solid darkblue;
+  padding: 1rem;
 }
 
-
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.component.ts]" value="import { Component } from '@angular/core';
-import { FlowerService } from './flower.service';
-import { AnimalService } from './animal.service';
-
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
-})
-export class AppComponent  {
-  constructor(public flower: FlowerService, public animal: AnimalService) {}
-}
-
-// When using @Host() together with @SkipSelf() in
-// child.component.ts for the AnimalService, add the
-// following viewProviders array to the @Component metadata:
-
-// viewProviders: [{ provide: AnimalService, useValue: { emoji: '🦔' } }]
-
-// So, the entire @ChildComponent() decorator and its
-// metadata should be as follows:
-
-// @Component({
-//   selector: 'app-root',
-//   templateUrl: './app.component.html',
-//   styleUrls: [ './app.component.css' ],
-//   viewProviders: [{ provide: AnimalService, useValue: { emoji: '🦔' } }]
-// })
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.module.ts]" value="import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
-import { ChildComponent } from './child/child.component';
-import { InspectorComponent } from './inspector/inspector.component';
-
-@NgModule({
-  imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, ChildComponent, InspectorComponent ],
-  bootstrap:    [ AppComponent ],
-  providers: []
-})
-export class AppModule { }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/flower.service.ts]" value="import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class FlowerService {
-  emoji = '🌺';
-}
-
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/environments/environment.prod.ts]" value="export const environment = {
-  production: true
-};
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/environments/environment.ts]" value="// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
-export const environment = {
-  production: false
-};
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/child/child.component.ts]" value="import { Component, OnInit, Host, SkipSelf, Optional } from '@angular/core';
-import { FlowerService } from '../flower.service';
-import { AnimalService } from '../animal.service';
-
-@Component({
-  selector: 'app-child',
-  templateUrl: './child.component.html',
-  styleUrls: ['./child.component.css'],
-  // provide services
-  providers: [{ provide: FlowerService, useValue: { emoji: '🌻' } }],
-  viewProviders: [{ provide: AnimalService, useValue: { emoji: '🐶' } }]
-})
-
-export class ChildComponent {
-  // inject service
-  constructor( public flower: FlowerService, public animal: AnimalService) { }
-
-  // viewProviders ensures that only the view gets to see this.
-  // With the AnimalService in the viewProviders, the
-  // InspectorComponent doesn't get to see it because the
-  // inspector is in the content.
-
-
-  // constructor( public flower: FlowerService, @Optional() @Host()  public animal?: AnimalService) { }
-
-// Comment out the above constructor and alternately
-// uncomment the two following constructors to see the
-// effects of @Host() and @Host() + @SkipSelf().
-
-// constructor(
-//     @Host() public animal : AnimalService,
-//     @Host() @Optional() public flower ?: FlowerService) { }
-
-// constructor(
-//     @SkipSelf() @Host() public animal : AnimalService,
-//     @SkipSelf() @Host() @Optional() public flower ?: FlowerService) { }
-
-}
-
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/inspector/inspector.component.ts]" value="import { Component } from '@angular/core';
-import { FlowerService } from '../flower.service';
-import { AnimalService } from '../animal.service';
-
-@Component({
-  selector: 'app-inspector',
-  templateUrl: './inspector.component.html',
-  styleUrls: ['./inspector.component.css']
-})
-export class InspectorComponent {
-  constructor(public flower: FlowerService, public animal: AnimalService) { }
-}
-
+*/"><input type="hidden" name="files[src/app/inspector/inspector.component.css]" value="
 
 /*
 Copyright Google LLC. All Rights Reserved.
@@ -337,47 +358,7 @@ nav a.active {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.component.css]" value="
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/child/child.component.css]" value=".container {
-  border: 1px solid darkblue;
-  padding: 1rem;
-}
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/inspector/inspector.component.css]" value="
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/index.html]" value="<!doctype html>
-<html lang=&quot;en&quot;>
-<head>
-  <meta charset=&quot;utf-8&quot;>
-  <title>providers vs. viewProviders</title>
-  <base href=&quot;/&quot;>
-  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
-  <link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot;>
-</head>
-<body>
-  <app-root></app-root>
-</body>
-</html>
-
-
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
--->"><input type="hidden" name="files[src/app/app.component.html]" value="
+*/"><input type="hidden" name="files[src/app/app.component.html]" value="
 <h2>From AppComponent:</h2>
 <p>Emoji from FlowerService: {{flower.emoji}}</p>
 <p>Emoji from AnimalService: {{animal.emoji}}</p>
@@ -413,6 +394,25 @@ Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 -->"><input type="hidden" name="files[src/app/inspector/inspector.component.html]" value="<p>Emoji from FlowerService: {{flower.emoji}}</p>
 <p>Emoji from AnimalService: {{animal.emoji}}</p>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->"><input type="hidden" name="files[src/index.html]" value="<!doctype html>
+<html lang=&quot;en&quot;>
+<head>
+  <meta charset=&quot;utf-8&quot;>
+  <title>providers vs. viewProviders</title>
+  <base href=&quot;/&quot;>
+  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
+  <link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot;>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
 
 
 <!-- 

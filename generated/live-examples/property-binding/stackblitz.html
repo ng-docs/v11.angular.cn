@@ -1,5 +1,201 @@
 <html lang="en"><head></head><body>
-        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/app.component.ts" target="_self"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
+        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/app.component.ts" target="_self"><input type="hidden" name="files[src/app/app.component.ts]" value="import { Component } from '@angular/core';
+
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  itemImageUrl = '../assets/phone.png';
+  isUnchanged = true;
+  classes = 'special';
+  parentItem = 'lamp';
+
+  currentItems = [{
+    id: 21,
+    name: 'phone'
+  }];
+
+  interpolationTitle = 'Interpolation';
+  propertyTitle = 'Property binding';
+
+  evilTitle = 'Template <script>alert(&quot;evil never sleeps&quot;)</script> Syntax';
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/app.module.ts]" value="import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+
+import { AppComponent } from './app.component';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { ItemListComponent } from './item-list/item-list.component';
+import { StringInitComponent } from './string-init/string-init.component';
+
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    ItemDetailComponent,
+    ItemListComponent,
+    StringInitComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/item-detail/item-detail.component.ts]" value="import { Component, OnInit, Input } from '@angular/core';
+// import { Item } from '../item';
+// import { ITEMS } from '../mock-items';
+
+@Component({
+  selector: 'app-item-detail',
+  templateUrl: './item-detail.component.html',
+  styleUrls: ['./item-detail.component.css']
+})
+export class ItemDetailComponent implements OnInit {
+
+  @Input() childItem: string;
+
+  // items = ITEMS;
+
+
+  currentItem = 'bananas in boxes';
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/item-list/item-list.component.ts]" value="import { Component, Input } from '@angular/core';
+import { ITEMS } from '../mock-items';
+import { Item } from '../item';
+
+@Component({
+  selector: 'app-item-list',
+  templateUrl: './item-list.component.html',
+  styleUrls: ['./item-list.component.css']
+})
+export class ItemListComponent {
+  listItems = ITEMS;
+  @Input() items: Item[];
+  constructor() { }
+
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/item.ts]" value="export interface Item {
+  id: number;
+  name: string;
+}
+
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/mock-items.ts]" value="import { Item } from './item';
+
+export const ITEMS: Item[] = [
+  { id: 11, name: 'bottle' },
+  { id: 12, name: 'boombox' },
+  { id: 13, name: 'chair' },
+  { id: 14, name: 'fishbowl' },
+  { id: 15, name: 'lamp' },
+  { id: 16, name: 'tv' },
+  { id: 17, name: 'mug' },
+  { id: 18, name: 'paintbrush' },
+  { id: 19, name: 'plant' },
+  { id: 20, name: 'teapot' }
+];
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/string-init/string-init.component.ts]" value="import { Component, OnInit, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-string-init',
+  templateUrl: './string-init.component.html',
+  styleUrls: ['./string-init.component.css']
+})
+export class StringInitComponent implements OnInit {
+
+  @Input() prefix: string;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/environments/environment.prod.ts]" value="export const environment = {
+  production: true
+};
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/environments/environment.ts]" value="// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
+
+export const environment = {
+  production: false
+};
+
+/*
+ * For easier debugging in development mode, you can import the following file
+ * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
+ *
+ * This import should be commented out in production mode because it will have a negative impact
+ * on performance if an error is thrown.
+ */
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
@@ -87,29 +283,14 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.component.ts]" value="import { Component } from '@angular/core';
-
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent {
-  itemImageUrl = '../assets/phone.png';
-  isUnchanged = true;
-  classes = 'special';
-  parentItem = 'lamp';
-
-  currentItems = [{
-    id: 21,
-    name: 'phone'
-  }];
-
-  interpolationTitle = 'Interpolation';
-  propertyTitle = 'Property binding';
-
-  evilTitle = 'Template <script>alert(&quot;evil never sleeps&quot;)</script> Syntax';
+*/"><input type="hidden" name="files[src/app/app.component.css]" value="div {
+  margin: 1rem auto;
+  width: 90%
+}
+.special {
+  background-color: #1976d2;
+  color: #fff;
+  padding: 1rem;
 }
 
 
@@ -117,167 +298,19 @@ export class AppComponent {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.module.ts]" value="import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-
-import { AppComponent } from './app.component';
-import { ItemDetailComponent } from './item-detail/item-detail.component';
-import { ItemListComponent } from './item-list/item-list.component';
-import { StringInitComponent } from './string-init/string-init.component';
-
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    ItemDetailComponent,
-    ItemListComponent,
-    StringInitComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-
+*/"><input type="hidden" name="files[src/app/item-detail/item-detail.component.css]" value="
 
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/item.ts]" value="export interface Item {
-  id: number;
-  name: string;
-}
-
-
+*/"><input type="hidden" name="files[src/app/item-list/item-list.component.css]" value="
 
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/mock-items.ts]" value="import { Item } from './item';
-
-export const ITEMS: Item[] = [
-  { id: 11, name: 'bottle' },
-  { id: 12, name: 'boombox' },
-  { id: 13, name: 'chair' },
-  { id: 14, name: 'fishbowl' },
-  { id: 15, name: 'lamp' },
-  { id: 16, name: 'tv' },
-  { id: 17, name: 'mug' },
-  { id: 18, name: 'paintbrush' },
-  { id: 19, name: 'plant' },
-  { id: 20, name: 'teapot' }
-];
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/environments/environment.prod.ts]" value="export const environment = {
-  production: true
-};
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/environments/environment.ts]" value="// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
-export const environment = {
-  production: false
-};
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/item-detail/item-detail.component.ts]" value="import { Component, OnInit, Input } from '@angular/core';
-// import { Item } from '../item';
-// import { ITEMS } from '../mock-items';
-
-@Component({
-  selector: 'app-item-detail',
-  templateUrl: './item-detail.component.html',
-  styleUrls: ['./item-detail.component.css']
-})
-export class ItemDetailComponent implements OnInit {
-
-  @Input() childItem: string;
-
-  // items = ITEMS;
-
-
-  currentItem = 'bananas in boxes';
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/item-list/item-list.component.ts]" value="import { Component, Input } from '@angular/core';
-import { ITEMS } from '../mock-items';
-import { Item } from '../item';
-
-@Component({
-  selector: 'app-item-list',
-  templateUrl: './item-list.component.html',
-  styleUrls: ['./item-list.component.css']
-})
-export class ItemListComponent {
-  listItems = ITEMS;
-  @Input() items: Item[];
-  constructor() { }
-
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/string-init/string-init.component.ts]" value="import { Component, OnInit, Input } from '@angular/core';
-
-@Component({
-  selector: 'app-string-init',
-  templateUrl: './string-init.component.html',
-  styleUrls: ['./string-init.component.css']
-})
-export class StringInitComponent implements OnInit {
-
-  @Input() prefix: string;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
-
+*/"><input type="hidden" name="files[src/app/string-init/string-init.component.css]" value="
 
 /*
 Copyright Google LLC. All Rights Reserved.
@@ -354,59 +387,7 @@ nav a.active {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.component.css]" value="div {
-  margin: 1rem auto;
-  width: 90%
-}
-.special {
-  background-color: #1976d2;
-  color: #fff;
-  padding: 1rem;
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/item-detail/item-detail.component.css]" value="
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/item-list/item-list.component.css]" value="
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/string-init/string-init.component.css]" value="
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/index.html]" value="<!doctype html>
-<html lang=&quot;en&quot;>
-<head>
-  <meta charset=&quot;utf-8&quot;>
-  <title>PropertyBinding</title>
-  <base href=&quot;/&quot;>
-  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
-  <link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot;>
-</head>
-<body>
-  <app-root></app-root>
-</body>
-</html>
-
-
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
--->"><input type="hidden" name="files[src/app/app.component.html]" value="
+*/"><input type="hidden" name="files[src/app/app.component.html]" value="
 
 <div>
   <h1>Property Binding with Angular</h1>
@@ -500,6 +481,25 @@ Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 -->"><input type="hidden" name="files[src/app/string-init/string-init.component.html]" value="<p>{{prefix}}</p>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->"><input type="hidden" name="files[src/index.html]" value="<!doctype html>
+<html lang=&quot;en&quot;>
+<head>
+  <meta charset=&quot;utf-8&quot;>
+  <title>PropertyBinding</title>
+  <base href=&quot;/&quot;>
+  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
+  <link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot;>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
 
 
 <!-- 
