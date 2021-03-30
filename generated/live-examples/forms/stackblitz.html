@@ -1,5 +1,145 @@
 <html lang="en"><head></head><body>
-        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/hero-form/hero-form.component.html" target="_self"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
+        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/hero-form/hero-form.component.html" target="_self"><input type="hidden" name="files[src/app/app.component.ts]" value="import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/app.module.ts]" value="import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+import { HeroFormComponent } from './hero-form/hero-form.component';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  declarations: [
+    AppComponent,
+    HeroFormComponent
+  ],
+  providers: [],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/hero-form/hero-form.component.ts]" value="import { Component } from '@angular/core';
+
+import { Hero } from '../hero';
+
+@Component({
+  selector: 'app-hero-form',
+  templateUrl: './hero-form.component.html',
+  styleUrls: ['./hero-form.component.css']
+})
+export class HeroFormComponent {
+
+  powers = ['Really Smart', 'Super Flexible',
+            'Super Hot', 'Weather Changer'];
+
+  model = new Hero(18, 'Dr IQ', this.powers[0], 'Chuck Overstreet');
+
+  submitted = false;
+
+  onSubmit() { this.submitted = true; }
+
+  // TODO: Remove this when we're done
+  get diagnostic() { return JSON.stringify(this.model); }
+
+  newHero() {
+    this.model = new Hero(42, '', '');
+  }
+
+  skyDog(): Hero {
+    const myHero =  new Hero(42, 'SkyDog',
+                           'Fetch any object at any distance',
+                           'Leslie Rollover');
+    console.log('My hero is called ' + myHero.name); // &quot;My hero is called SkyDog&quot;
+    return myHero;
+  }
+
+  //////// NOT SHOWN IN DOCS ////////
+
+  // Reveal in html:
+  //   Name via form.controls = {{showFormControls(heroForm)}}
+  showFormControls(form: any) {
+    return form &amp;&amp; form.controls.name &amp;&amp;
+    form.controls.name.value; // Dr. IQ
+  }
+
+  /////////////////////////////
+
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/hero.ts]" value="export class Hero {
+
+  constructor(
+    public id: number,
+    public name: string,
+    public power: string,
+    public alterEgo?: string
+  ) {  }
+
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/environments/environment.prod.ts]" value="export const environment = {
+  production: true
+};
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/environments/environment.ts]" value="// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
+
+export const environment = {
+  production: false
+};
+
+/*
+ * For easier debugging in development mode, you can import the following file
+ * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
+ *
+ * This import should be commented out in production mode because it will have a negative impact
+ * on performance if an error is thrown.
+ */
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
@@ -86,139 +226,24 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.component.ts]" value="import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent { }
-
+*/"><input type="hidden" name="files[src/app/app.component.css]" value="
 
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.module.ts]" value="import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
-import { HeroFormComponent } from './hero-form/hero-form.component';
-
-@NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule
-  ],
-  declarations: [
-    AppComponent,
-    HeroFormComponent
-  ],
-  providers: [],
-  bootstrap: [ AppComponent ]
-})
-export class AppModule { }
-
+*/"><input type="hidden" name="files[src/app/hero-form/hero-form.component.css]" value="
 
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/hero.ts]" value="export class Hero {
-
-  constructor(
-    public id: number,
-    public name: string,
-    public power: string,
-    public alterEgo?: string
-  ) {  }
-
+*/"><input type="hidden" name="files[src/assets/forms.css]" value=".ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
 }
 
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/environments/environment.prod.ts]" value="export const environment = {
-  production: true
-};
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/environments/environment.ts]" value="// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
-export const environment = {
-  production: false
-};
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/hero-form/hero-form.component.ts]" value="import { Component } from '@angular/core';
-
-import { Hero } from '../hero';
-
-@Component({
-  selector: 'app-hero-form',
-  templateUrl: './hero-form.component.html',
-  styleUrls: ['./hero-form.component.css']
-})
-export class HeroFormComponent {
-
-  powers = ['Really Smart', 'Super Flexible',
-            'Super Hot', 'Weather Changer'];
-
-  model = new Hero(18, 'Dr IQ', this.powers[0], 'Chuck Overstreet');
-
-  submitted = false;
-
-  onSubmit() { this.submitted = true; }
-
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }
-
-  newHero() {
-    this.model = new Hero(42, '', '');
-  }
-
-  skyDog(): Hero {
-    const myHero =  new Hero(42, 'SkyDog',
-                           'Fetch any object at any distance',
-                           'Leslie Rollover');
-    console.log('My hero is called ' + myHero.name); // &quot;My hero is called SkyDog&quot;
-    return myHero;
-  }
-
-  //////// NOT SHOWN IN DOCS ////////
-
-  // Reveal in html:
-  //   Name via form.controls = {{showFormControls(heroForm)}}
-  showFormControls(form: any) {
-    return form &amp;&amp; form.controls.name &amp;&amp;
-    form.controls.name.value; // Dr. IQ
-  }
-
-  /////////////////////////////
-
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
 }
 
 
@@ -304,56 +329,7 @@ nav a.active {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.component.css]" value="
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/assets/forms.css]" value=".ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948; /* green */
-}
-
-.ng-invalid:not(form)  {
-  border-left: 5px solid #a94442; /* red */
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/hero-form/hero-form.component.css]" value="
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/index.html]" value="<!DOCTYPE html>
-<html lang=&quot;en&quot;>
-  <head>
-    <title>Hero Form</title>
-    <base href=&quot;/&quot;>
-    <meta charset=&quot;UTF-8&quot;>
-    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
-
-    <link rel=&quot;stylesheet&quot;
-          href=&quot;https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css&quot;>
-    <link rel=&quot;stylesheet&quot; href=&quot;assets/forms.css&quot;>
-  </head>
-
-  <body>
-    <app-root></app-root>
-  </body>
-
-</html>
-
-
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
--->"><input type="hidden" name="files[src/app/app.component.html]" value="<app-hero-form></app-hero-form>
+*/"><input type="hidden" name="files[src/app/app.component.html]" value="<app-hero-form></app-hero-form>
 
 
 <!-- 
@@ -523,6 +499,30 @@ can be found in the LICENSE file at https://angular.io/license
            (ngModelChange)=&quot;model.name = $event&quot;>
     TODO: remove this: {{model.name}}
 </div>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->"><input type="hidden" name="files[src/index.html]" value="<!DOCTYPE html>
+<html lang=&quot;en&quot;>
+  <head>
+    <title>Hero Form</title>
+    <base href=&quot;/&quot;>
+    <meta charset=&quot;UTF-8&quot;>
+    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
+
+    <link rel=&quot;stylesheet&quot;
+          href=&quot;https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css&quot;>
+    <link rel=&quot;stylesheet&quot; href=&quot;assets/forms.css&quot;>
+  </head>
+
+  <body>
+    <app-root></app-root>
+  </body>
+
+</html>
 
 
 <!-- 

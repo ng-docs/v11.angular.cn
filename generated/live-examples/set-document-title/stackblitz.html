@@ -1,5 +1,91 @@
 <html lang="en"><head></head><body>
-        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/app.component.ts" target="_self"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
+        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/app.component.ts" target="_self"><input type="hidden" name="files[src/app/app.component.ts]" value="// Import the native Angular services.
+import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <p>
+      Select a title to set on the current HTML document:
+    </p>
+
+    <ul>
+      <li><a (click)=&quot;setTitle('Good morning!')&quot;>Good morning</a>.</li>
+      <li><a (click)=&quot;setTitle('Good afternoon!')&quot;>Good afternoon</a>.</li>
+      <li><a (click)=&quot;setTitle('Good evening!')&quot;>Good evening</a>.</li>
+    </ul>
+  `,
+})
+export class AppComponent {
+  public constructor(private titleService: Title) { }
+
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
+  }
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/app.module.ts]" value="import { NgModule } from '@angular/core';
+import { BrowserModule, Title } from '@angular/platform-browser';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  imports: [
+    BrowserModule
+  ],
+  declarations: [
+    AppComponent
+  ],
+  providers: [
+    Title
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/environments/environment.prod.ts]" value="export const environment = {
+  production: true
+};
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/environments/environment.ts]" value="// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
+
+export const environment = {
+  production: false
+};
+
+/*
+ * For easier debugging in development mode, you can import the following file
+ * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
+ *
+ * This import should be commented out in production mode because it will have a negative impact
+ * on performance if an error is thrown.
+ */
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
@@ -80,92 +166,6 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.component.ts]" value="// Import the native Angular services.
-import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-
-@Component({
-  selector: 'app-root',
-  template: `
-    <p>
-      Select a title to set on the current HTML document:
-    </p>
-
-    <ul>
-      <li><a (click)=&quot;setTitle('Good morning!')&quot;>Good morning</a>.</li>
-      <li><a (click)=&quot;setTitle('Good afternoon!')&quot;>Good afternoon</a>.</li>
-      <li><a (click)=&quot;setTitle('Good evening!')&quot;>Good evening</a>.</li>
-    </ul>
-  `,
-})
-export class AppComponent {
-  public constructor(private titleService: Title) { }
-
-  public setTitle(newTitle: string) {
-    this.titleService.setTitle(newTitle);
-  }
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.module.ts]" value="import { NgModule } from '@angular/core';
-import { BrowserModule, Title } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-  imports: [
-    BrowserModule
-  ],
-  declarations: [
-    AppComponent
-  ],
-  providers: [
-    Title
-  ],
-  bootstrap: [ AppComponent ]
-})
-export class AppModule { }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/environments/environment.prod.ts]" value="export const environment = {
-  production: true
-};
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/environments/environment.ts]" value="// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
-export const environment = {
-  production: false
-};
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
 
 /*

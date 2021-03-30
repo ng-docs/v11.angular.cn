@@ -1,92 +1,5 @@
 <html lang="en"><head></head><body>
-        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/app.component.ts" target="_self"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
-
-if (environment.production) {
-  enableProdMode();
-}
-
-platformBrowserDynamic().bootstrapModule(AppModule);
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/polyfills.ts]" value="/**
- * This file includes polyfills needed by Angular and is loaded before the app.
- * You can add your own extra polyfills to this file.
- *
- * This file is divided into 2 sections:
- *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
- *   2. Application imports. Files imported after ZoneJS that should be loaded before your main
- *      file.
- *
- * The current setup is for so-called &quot;evergreen&quot; browsers; the last versions of browsers that
- * automatically update themselves. This includes Safari >= 10, Chrome >= 55 (including Opera),
- * Edge >= 13 on the desktop, and iOS 10 and Chrome on mobile.
- *
- * Learn more in https://angular.io/guide/browser-support
- */
-
-/***************************************************************************************************
- * BROWSER POLYFILLS
- */
-
-/** IE11 requires the following for NgClass support on SVG elements */
-// import 'classlist.js';  // Run `npm install --save classlist.js`.
-
-/**
- * Web Animations `@angular/platform-browser/animations`
- * Only required if AnimationBuilder is used within the application and using IE/Edge or Safari.
- * Standard animation support in Angular DOES NOT require any polyfills (as of Angular 6.0).
- */
-// import 'web-animations-js';  // Run `npm install --save web-animations-js`.
-
-/**
- * By default, zone.js will patch all possible macroTask and DomEvents
- * user can disable parts of macroTask/DomEvents patch by setting following flags
- * because those flags need to be set before `zone.js` being loaded, and webpack
- * will put import in the top of bundle, so user need to create a separate file
- * in this directory (for example: zone-flags.ts), and put the following flags
- * into that file, and then add the following code before importing zone.js.
- * import './zone-flags';
- *
- * The flags allowed in zone-flags.ts are listed here.
- *
- * The following flags will work for all browsers.
- *
- * (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch
- * requestAnimationFrame
- * (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
- * (window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove']; // disable patch
- * specified eventNames
- *
- *  in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js
- *  with the following flag, it will bypass `zone.js` patch for IE/Edge
- *
- *  (window as any).__Zone_enable_cross_context_check = true;
- *
- */
-
-/***************************************************************************************************
- * Zone JS is required by default for Angular itself.
- */
-import 'zone.js/dist/zone'; // Included with Angular CLI.
-
-/***************************************************************************************************
- * APPLICATION IMPORTS
- */
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app-config.ts]" value="/*
+        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/app.component.ts" target="_self"><input type="hidden" name="files[src/app/app-config.ts]" value="/*
   Must put this interface in its own file instead of app.config.ts
   or else TypeScript gives a (bogus) warning:
   WARNING in ./src/app/... .ts
@@ -205,6 +118,366 @@ import { ProvidersModule } from './providers.module';
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/car/car-creations.ts]" value="// Examples with car and engine variations
+
+import { Car, Engine, Tires } from './car';
+
+///////// example 1 ////////////
+export function simpleCar() {
+  // Simple car with 4 cylinders and Flintstone tires.
+  const car = new Car(new Engine(), new Tires());
+  car.description = 'Simple';
+  return car;
+}
+
+
+///////// example 2 ////////////
+class Engine2 {
+  constructor(public cylinders: number) { }
+}
+
+export function superCar() {
+  // Super car with 12 cylinders and Flintstone tires.
+  const bigCylinders = 12;
+  const car = new Car(new Engine2(bigCylinders), new Tires());
+  car.description = 'Super';
+  return car;
+}
+
+/////////// example 3 //////////
+class MockEngine extends Engine { cylinders = 8; }
+class MockTires  extends Tires  { make = 'YokoGoodStone'; }
+
+export function testCar() {
+  // Test car with 8 cylinders and YokoGoodStone tires.
+  const car = new Car(new MockEngine(), new MockTires());
+  car.description = 'Test';
+  return car;
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/car/car-factory.ts]" value="import { Engine, Tires, Car } from './car';
+
+// BAD pattern!
+export class CarFactory {
+  createCar() {
+    const car = new Car(this.createEngine(), this.createTires());
+    car.description = 'Factory';
+    return car;
+  }
+
+  createEngine() {
+    return new Engine();
+  }
+
+  createTires() {
+    return new Tires();
+  }
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/car/car-injector.ts]" value="import { Injector } from '@angular/core';
+
+import { Car, Engine, Tires } from './car';
+import { Logger } from '../logger.service';
+
+export function useInjector() {
+  let injector: Injector;
+  /*
+  // Cannot instantiate an Injector like this!
+  let injector = new Injector([
+    { provide: Car, deps: [Engine, Tires] },
+    { provide: Engine, deps: [] },
+    { provide: Tires, deps: [] }
+  ]);
+  */
+  injector = Injector.create({
+    providers: [
+      { provide: Car, deps: [Engine, Tires] },
+      { provide: Engine, deps: [] },
+      { provide: Tires, deps: [] }
+    ]
+  });
+  const car = injector.get(Car);
+  car.description = 'Injector';
+
+  injector = Injector.create({
+    providers: [{ provide: Logger, deps: [] }]
+  });
+  const logger = injector.get(Logger);
+  logger.log('Injector car.drive() said: ' + car.drive());
+  return car;
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/car/car-no-di.ts]" value="// Car without DI
+import { Engine, Tires } from './car';
+
+export class Car {
+
+  public engine: Engine;
+  public tires: Tires;
+  public description = 'No DI';
+
+  constructor() {
+    this.engine = new Engine();
+    this.tires = new Tires();
+  }
+
+  // Method using the engine and tires
+  drive() {
+    return `${this.description} car with ` +
+      `${this.engine.cylinders} cylinders and ${this.tires.make} tires.`;
+  }
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/car/car.component.ts]" value="import { Component } from '@angular/core';
+
+import { Car, Engine, Tires } from './car';
+import { Car as CarNoDi } from './car-no-di';
+import { CarFactory } from './car-factory';
+
+import { testCar,
+         simpleCar,
+         superCar } from './car-creations';
+
+import { useInjector } from './car-injector';
+
+
+@Component({
+  selector: 'app-car',
+  template: `
+  <h2>Cars</h2>
+  <div id=&quot;di&quot;>{{car.drive()}}</div>
+  <div id=&quot;nodi&quot;>{{noDiCar.drive()}}</div>
+  <div id=&quot;injector&quot;>{{injectorCar.drive()}}</div>
+  <div id=&quot;factory&quot;>{{factoryCar.drive()}}</div>
+  <div id=&quot;simple&quot;>{{simpleCar.drive()}}</div>
+  <div id=&quot;super&quot;>{{superCar.drive()}}</div>
+  <div id=&quot;test&quot;>{{testCar.drive()}}</div>
+  `,
+  providers: [Car, Engine, Tires]
+})
+export class CarComponent {
+  factoryCar  = (new CarFactory()).createCar();
+  injectorCar = useInjector();
+  noDiCar     = new CarNoDi();
+  simpleCar   = simpleCar();
+  superCar    = superCar();
+  testCar     = testCar();
+
+  constructor(public car: Car) {}
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/car/car.ts]" value="import { Injectable } from '@angular/core';
+
+export class Engine {
+  public cylinders = 4;
+}
+
+export class Tires {
+  public make  = 'Flintstone';
+  public model = 'Square';
+}
+
+@Injectable()
+export class Car {
+  public description = 'DI';
+
+  constructor(public engine: Engine, public tires: Tires) { }
+
+  // Method using the engine and tires
+  drive() {
+    return `${this.description} car with ` +
+      `${this.engine.cylinders} cylinders and ${this.tires.make} tires.`;
+  }
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/heroes/hero-list.component.ts]" value="/* tslint:disable:one-line */
+import { Component } from '@angular/core';
+import { Hero } from './hero';
+import { HeroService } from './hero.service';
+
+@Component({
+  selector: 'app-hero-list',
+  template: `
+    <div *ngFor=&quot;let hero of heroes&quot;>
+      {{hero.id}} - {{hero.name}}
+      ({{hero.isSecret ? 'secret' : 'public'}})
+    </div>
+  `,
+})
+export class HeroListComponent {
+  heroes: Hero[];
+
+  constructor(heroService: HeroService)
+  {
+    this.heroes = heroService.getHeroes();
+  }
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/heroes/hero.module.ts]" value="import { NgModule } from '@angular/core';
+
+@NgModule({})
+export class HeroModule {
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/heroes/hero.service.provider.ts]" value="/* tslint:disable:one-line */
+import { HeroService } from './hero.service';
+import { Logger } from '../logger.service';
+import { UserService } from '../user.service';
+
+const heroServiceFactory = (logger: Logger, userService: UserService) => {
+  return new HeroService(logger, userService.user.isAuthorized);
+};
+
+export let heroServiceProvider =
+  { provide: HeroService,
+    useFactory: heroServiceFactory,
+    deps: [Logger, UserService]
+  };
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/heroes/hero.service.ts]" value="import { Injectable } from '@angular/core';
+import { HEROES } from './mock-heroes';
+import { Logger } from '../logger.service';
+import { UserService } from '../user.service';
+
+@Injectable({
+  providedIn: 'root',
+  useFactory: (logger: Logger, userService: UserService) =>
+      new HeroService(logger, userService.user.isAuthorized),
+  deps: [Logger, UserService],
+})
+export class HeroService {
+  constructor(
+    private logger: Logger,
+    private isAuthorized: boolean) { }
+
+  getHeroes() {
+    const auth = this.isAuthorized ? 'authorized ' : 'unauthorized';
+    this.logger.log(`Getting heroes for ${auth} user.`);
+    return HEROES.filter(hero => this.isAuthorized || !hero.isSecret);
+  }
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/heroes/hero.ts]" value="export interface Hero {
+  id: number;
+  name: string;
+  isSecret: boolean;
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/heroes/heroes-tsp.component.ts]" value="import { Component } from '@angular/core';
+
+/**
+ * A version of `HeroesComponent` that does not provide the `HeroService` (and thus relies on its
+ * `Injectable`-declared provider) in order to function.
+ *
+ * TSP stands for Tree-Shakeable Provider.
+ */
+@Component({
+  selector: 'app-heroes-tsp',
+  template: `
+    <h2>Heroes</h2>
+    <app-hero-list></app-hero-list>
+  `
+})
+export class HeroesTspComponent { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/heroes/heroes.component.ts]" value="import { Component } from '@angular/core';
+import { heroServiceProvider } from './hero.service.provider';
+
+@Component({
+  selector: 'app-heroes',
+  providers: [ heroServiceProvider ],
+  template: `
+    <h2>Heroes</h2>
+    <app-hero-list></app-hero-list>
+  `
+})
+export class HeroesComponent { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/heroes/mock-heroes.ts]" value="import { Hero } from './hero';
+
+export const HEROES: Hero[] = [
+  { id: 11, isSecret: false, name: 'Dr Nice' },
+  { id: 12, isSecret: false, name: 'Narco' },
+  { id: 13, isSecret: false, name: 'Bombasto' },
+  { id: 14, isSecret: false, name: 'Celeritas' },
+  { id: 15, isSecret: false, name: 'Magneta' },
+  { id: 16, isSecret: false, name: 'RubberMan' },
+  { id: 17, isSecret: false, name: 'Dynama' },
+  { id: 18, isSecret: true,  name: 'Dr IQ' },
+  { id: 19, isSecret: true,  name: 'Magma' },
+  { id: 20, isSecret: true,  name: 'Tornado' }
+];
 
 
 /*
@@ -633,6 +906,58 @@ function it(label: string, test: () => void) {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/tree-shaking/app.module.ts]" value="import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { ServiceModule } from './service-and-module';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot([]),
+    ServiceModule,
+  ],
+})
+export class AppModule {
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/tree-shaking/service-and-module.ts]" value="import { Injectable, NgModule } from '@angular/core';
+
+@Injectable()
+export class Service {
+  doSomething(): void {
+  }
+}
+
+@NgModule({
+  providers: [Service],
+})
+export class ServiceModule {
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/tree-shaking/service.ts]" value="import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class Service {
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="files[src/app/user.service.ts]" value="import { Injectable } from '@angular/core';
 
 export class User {
@@ -693,412 +1018,87 @@ export const environment = {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/car/car-creations.ts]" value="// Examples with car and engine variations
+*/"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { Car, Engine, Tires } from './car';
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
 
-///////// example 1 ////////////
-export function simpleCar() {
-  // Simple car with 4 cylinders and Flintstone tires.
-  const car = new Car(new Engine(), new Tires());
-  car.description = 'Simple';
-  return car;
+if (environment.production) {
+  enableProdMode();
 }
 
-
-///////// example 2 ////////////
-class Engine2 {
-  constructor(public cylinders: number) { }
-}
-
-export function superCar() {
-  // Super car with 12 cylinders and Flintstone tires.
-  const bigCylinders = 12;
-  const car = new Car(new Engine2(bigCylinders), new Tires());
-  car.description = 'Super';
-  return car;
-}
-
-/////////// example 3 //////////
-class MockEngine extends Engine { cylinders = 8; }
-class MockTires  extends Tires  { make = 'YokoGoodStone'; }
-
-export function testCar() {
-  // Test car with 8 cylinders and YokoGoodStone tires.
-  const car = new Car(new MockEngine(), new MockTires());
-  car.description = 'Test';
-  return car;
-}
+platformBrowserDynamic().bootstrapModule(AppModule);
 
 
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/car/car-factory.ts]" value="import { Engine, Tires, Car } from './car';
+*/"><input type="hidden" name="files[src/polyfills.ts]" value="/**
+ * This file includes polyfills needed by Angular and is loaded before the app.
+ * You can add your own extra polyfills to this file.
+ *
+ * This file is divided into 2 sections:
+ *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
+ *   2. Application imports. Files imported after ZoneJS that should be loaded before your main
+ *      file.
+ *
+ * The current setup is for so-called &quot;evergreen&quot; browsers; the last versions of browsers that
+ * automatically update themselves. This includes Safari >= 10, Chrome >= 55 (including Opera),
+ * Edge >= 13 on the desktop, and iOS 10 and Chrome on mobile.
+ *
+ * Learn more in https://angular.io/guide/browser-support
+ */
 
-// BAD pattern!
-export class CarFactory {
-  createCar() {
-    const car = new Car(this.createEngine(), this.createTires());
-    car.description = 'Factory';
-    return car;
-  }
+/***************************************************************************************************
+ * BROWSER POLYFILLS
+ */
 
-  createEngine() {
-    return new Engine();
-  }
-
-  createTires() {
-    return new Tires();
-  }
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/car/car-injector.ts]" value="import { Injector } from '@angular/core';
-
-import { Car, Engine, Tires } from './car';
-import { Logger } from '../logger.service';
-
-export function useInjector() {
-  let injector: Injector;
-  /*
-  // Cannot instantiate an Injector like this!
-  let injector = new Injector([
-    { provide: Car, deps: [Engine, Tires] },
-    { provide: Engine, deps: [] },
-    { provide: Tires, deps: [] }
-  ]);
-  */
-  injector = Injector.create({
-    providers: [
-      { provide: Car, deps: [Engine, Tires] },
-      { provide: Engine, deps: [] },
-      { provide: Tires, deps: [] }
-    ]
-  });
-  const car = injector.get(Car);
-  car.description = 'Injector';
-
-  injector = Injector.create({
-    providers: [{ provide: Logger, deps: [] }]
-  });
-  const logger = injector.get(Logger);
-  logger.log('Injector car.drive() said: ' + car.drive());
-  return car;
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/car/car-no-di.ts]" value="// Car without DI
-import { Engine, Tires } from './car';
-
-export class Car {
-
-  public engine: Engine;
-  public tires: Tires;
-  public description = 'No DI';
-
-  constructor() {
-    this.engine = new Engine();
-    this.tires = new Tires();
-  }
-
-  // Method using the engine and tires
-  drive() {
-    return `${this.description} car with ` +
-      `${this.engine.cylinders} cylinders and ${this.tires.make} tires.`;
-  }
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/car/car.component.ts]" value="import { Component } from '@angular/core';
-
-import { Car, Engine, Tires } from './car';
-import { Car as CarNoDi } from './car-no-di';
-import { CarFactory } from './car-factory';
-
-import { testCar,
-         simpleCar,
-         superCar } from './car-creations';
-
-import { useInjector } from './car-injector';
-
-
-@Component({
-  selector: 'app-car',
-  template: `
-  <h2>Cars</h2>
-  <div id=&quot;di&quot;>{{car.drive()}}</div>
-  <div id=&quot;nodi&quot;>{{noDiCar.drive()}}</div>
-  <div id=&quot;injector&quot;>{{injectorCar.drive()}}</div>
-  <div id=&quot;factory&quot;>{{factoryCar.drive()}}</div>
-  <div id=&quot;simple&quot;>{{simpleCar.drive()}}</div>
-  <div id=&quot;super&quot;>{{superCar.drive()}}</div>
-  <div id=&quot;test&quot;>{{testCar.drive()}}</div>
-  `,
-  providers: [Car, Engine, Tires]
-})
-export class CarComponent {
-  factoryCar  = (new CarFactory()).createCar();
-  injectorCar = useInjector();
-  noDiCar     = new CarNoDi();
-  simpleCar   = simpleCar();
-  superCar    = superCar();
-  testCar     = testCar();
-
-  constructor(public car: Car) {}
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/car/car.ts]" value="import { Injectable } from '@angular/core';
-
-export class Engine {
-  public cylinders = 4;
-}
-
-export class Tires {
-  public make  = 'Flintstone';
-  public model = 'Square';
-}
-
-@Injectable()
-export class Car {
-  public description = 'DI';
-
-  constructor(public engine: Engine, public tires: Tires) { }
-
-  // Method using the engine and tires
-  drive() {
-    return `${this.description} car with ` +
-      `${this.engine.cylinders} cylinders and ${this.tires.make} tires.`;
-  }
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/heroes/hero-list.component.ts]" value="/* tslint:disable:one-line */
-import { Component } from '@angular/core';
-import { Hero } from './hero';
-import { HeroService } from './hero.service';
-
-@Component({
-  selector: 'app-hero-list',
-  template: `
-    <div *ngFor=&quot;let hero of heroes&quot;>
-      {{hero.id}} - {{hero.name}}
-      ({{hero.isSecret ? 'secret' : 'public'}})
-    </div>
-  `,
-})
-export class HeroListComponent {
-  heroes: Hero[];
-
-  constructor(heroService: HeroService)
-  {
-    this.heroes = heroService.getHeroes();
-  }
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/heroes/hero.module.ts]" value="import { NgModule } from '@angular/core';
-
-@NgModule({})
-export class HeroModule {
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/heroes/hero.service.provider.ts]" value="/* tslint:disable:one-line */
-import { HeroService } from './hero.service';
-import { Logger } from '../logger.service';
-import { UserService } from '../user.service';
-
-const heroServiceFactory = (logger: Logger, userService: UserService) => {
-  return new HeroService(logger, userService.user.isAuthorized);
-};
-
-export let heroServiceProvider =
-  { provide: HeroService,
-    useFactory: heroServiceFactory,
-    deps: [Logger, UserService]
-  };
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/heroes/hero.service.ts]" value="import { Injectable } from '@angular/core';
-import { HEROES } from './mock-heroes';
-import { Logger } from '../logger.service';
-import { UserService } from '../user.service';
-
-@Injectable({
-  providedIn: 'root',
-  useFactory: (logger: Logger, userService: UserService) =>
-      new HeroService(logger, userService.user.isAuthorized),
-  deps: [Logger, UserService],
-})
-export class HeroService {
-  constructor(
-    private logger: Logger,
-    private isAuthorized: boolean) { }
-
-  getHeroes() {
-    const auth = this.isAuthorized ? 'authorized ' : 'unauthorized';
-    this.logger.log(`Getting heroes for ${auth} user.`);
-    return HEROES.filter(hero => this.isAuthorized || !hero.isSecret);
-  }
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/heroes/hero.ts]" value="export interface Hero {
-  id: number;
-  name: string;
-  isSecret: boolean;
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/heroes/heroes-tsp.component.ts]" value="import { Component } from '@angular/core';
+/** IE11 requires the following for NgClass support on SVG elements */
+// import 'classlist.js';  // Run `npm install --save classlist.js`.
 
 /**
- * A version of `HeroesComponent` that does not provide the `HeroService` (and thus relies on its
- * `Injectable`-declared provider) in order to function.
- *
- * TSP stands for Tree-Shakeable Provider.
+ * Web Animations `@angular/platform-browser/animations`
+ * Only required if AnimationBuilder is used within the application and using IE/Edge or Safari.
+ * Standard animation support in Angular DOES NOT require any polyfills (as of Angular 6.0).
  */
-@Component({
-  selector: 'app-heroes-tsp',
-  template: `
-    <h2>Heroes</h2>
-    <app-hero-list></app-hero-list>
-  `
-})
-export class HeroesTspComponent { }
+// import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 
+/**
+ * By default, zone.js will patch all possible macroTask and DomEvents
+ * user can disable parts of macroTask/DomEvents patch by setting following flags
+ * because those flags need to be set before `zone.js` being loaded, and webpack
+ * will put import in the top of bundle, so user need to create a separate file
+ * in this directory (for example: zone-flags.ts), and put the following flags
+ * into that file, and then add the following code before importing zone.js.
+ * import './zone-flags';
+ *
+ * The flags allowed in zone-flags.ts are listed here.
+ *
+ * The following flags will work for all browsers.
+ *
+ * (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch
+ * requestAnimationFrame
+ * (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
+ * (window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove']; // disable patch
+ * specified eventNames
+ *
+ *  in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js
+ *  with the following flag, it will bypass `zone.js` patch for IE/Edge
+ *
+ *  (window as any).__Zone_enable_cross_context_check = true;
+ *
+ */
 
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/heroes/heroes.component.ts]" value="import { Component } from '@angular/core';
-import { heroServiceProvider } from './hero.service.provider';
+/***************************************************************************************************
+ * Zone JS is required by default for Angular itself.
+ */
+import 'zone.js/dist/zone'; // Included with Angular CLI.
 
-@Component({
-  selector: 'app-heroes',
-  providers: [ heroServiceProvider ],
-  template: `
-    <h2>Heroes</h2>
-    <app-hero-list></app-hero-list>
-  `
-})
-export class HeroesComponent { }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/heroes/mock-heroes.ts]" value="import { Hero } from './hero';
-
-export const HEROES: Hero[] = [
-  { id: 11, isSecret: false, name: 'Dr Nice' },
-  { id: 12, isSecret: false, name: 'Narco' },
-  { id: 13, isSecret: false, name: 'Bombasto' },
-  { id: 14, isSecret: false, name: 'Celeritas' },
-  { id: 15, isSecret: false, name: 'Magneta' },
-  { id: 16, isSecret: false, name: 'RubberMan' },
-  { id: 17, isSecret: false, name: 'Dynama' },
-  { id: 18, isSecret: true,  name: 'Dr IQ' },
-  { id: 19, isSecret: true,  name: 'Magma' },
-  { id: 20, isSecret: true,  name: 'Tornado' }
-];
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/tree-shaking/app.module.ts]" value="import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { ServiceModule } from './service-and-module';
-
-@NgModule({
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot([]),
-    ServiceModule,
-  ],
-})
-export class AppModule {
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/tree-shaking/service-and-module.ts]" value="import { Injectable, NgModule } from '@angular/core';
-
-@Injectable()
-export class Service {
-  doSomething(): void {
-  }
-}
-
-@NgModule({
-  providers: [Service],
-})
-export class ServiceModule {
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/tree-shaking/service.ts]" value="import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root',
-})
-export class Service {
-}
+/***************************************************************************************************
+ * APPLICATION IMPORTS
+ */
 
 
 /*

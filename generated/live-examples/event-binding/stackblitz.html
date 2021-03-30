@@ -1,5 +1,167 @@
 <html lang="en"><head></head><body>
-        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/app.component.ts" target="_self"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
+        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/app.component.ts" target="_self"><input type="hidden" name="files[src/app/app.component.ts]" value="import { Component } from '@angular/core';
+import { Item } from './item';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+
+  currentItem = { name: 'teapot'} ;
+  clickMessage = '';
+
+  onSave(event?: KeyboardEvent) {
+    const evtMsg = event ? ' Event target is ' + (event.target as HTMLElement).textContent : '';
+    alert('Saved.' + evtMsg);
+    if (event) { event.stopPropagation(); }
+  }
+
+  deleteItem(item: Item) {
+    alert(`Delete the ${item.name}.`);
+  }
+
+  onClickMe(event?: KeyboardEvent) {
+    const evtMsg = event ? ' Event target class is ' + (event.target as HTMLElement).className  : '';
+    alert('Click me.' + evtMsg);
+  }
+
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/app.module.ts]" value="import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+
+import { AppComponent } from './app.component';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { ClickDirective } from './click.directive';
+
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    ItemDetailComponent,
+    ClickDirective
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/click.directive.ts]" value="// tslint:disable: directive-selector
+import { Directive, ElementRef, EventEmitter, Output } from '@angular/core';
+
+@Directive({selector: '[myClick]'})
+export class ClickDirective {
+  @Output('myClick') clicks = new EventEmitter<string>(); //  @Output(alias) propertyName = ...
+
+  toggle = false;
+
+  constructor(el: ElementRef) {
+    el.nativeElement
+      .addEventListener('click', (event: Event) => {
+        this.toggle = !this.toggle;
+        this.clicks.emit(this.toggle ? 'Click!' : '');
+      });
+  }
+}
+
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/item-detail/item-detail.component.ts]" value="/* tslint:disable use-input-property-decorator use-output-property-decorator */
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { Item } from '../item';
+
+@Component({
+  selector: 'app-item-detail',
+  styleUrls: ['./item-detail.component.css'],
+  templateUrl: './item-detail.component.html'
+})
+export class ItemDetailComponent {
+
+  @Input() item;
+  itemImageUrl = 'assets/teapot.svg';
+  lineThrough = '';
+  displayNone = '';
+  @Input() prefix = '';
+
+  // This component makes a request but it can't actually delete a hero.
+  @Output() deleteRequest = new EventEmitter<Item>();
+
+  delete() {
+    this.deleteRequest.emit(this.item);
+    this.displayNone = this.displayNone ? '' : 'none';
+    this.lineThrough = this.lineThrough ? '' : 'line-through';
+  }
+
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/item.ts]" value="export class Item {
+  name: '';
+}
+
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/environments/environment.prod.ts]" value="export const environment = {
+  production: true
+};
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/environments/environment.ts]" value="// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
+
+export const environment = {
+  production: false
+};
+
+/*
+ * For easier debugging in development mode, you can import the following file
+ * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
+ *
+ * This import should be commented out in production mode because it will have a negative impact
+ * on performance if an error is thrown.
+ */
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
@@ -87,34 +249,30 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.component.ts]" value="import { Component } from '@angular/core';
-import { Item } from './item';
+*/"><input type="hidden" name="files[src/app/app.component.css]" value=".group {
+  background-color: #dae8f9;
+  padding: 1rem;
+  margin: 1rem 0;
+}
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent {
+.parent-div {
+  background-color: #bdd1f7;
+  border: solid 1px rgb(25, 118, 210);
+  padding: 1rem;
+}
 
-  currentItem = { name: 'teapot'} ;
-  clickMessage = '';
+.parent-div:hover {
+  background-color: #8fb4f9;
+}
 
-  onSave(event?: KeyboardEvent) {
-    const evtMsg = event ? ' Event target is ' + (event.target as HTMLElement).textContent : '';
-    alert('Saved.' + evtMsg);
-    if (event) { event.stopPropagation(); }
-  }
+.child-div {
+  margin-top: 1rem;
+  background-color: #fff;
+  padding: 1rem;
+}
 
-  deleteItem(item: Item) {
-    alert(`Delete the ${item.name}.`);
-  }
-
-  onClickMe(event?: KeyboardEvent) {
-    const evtMsg = event ? ' Event target class is ' + (event.target as HTMLElement).className  : '';
-    alert('Click me.' + evtMsg);
-  }
-
+.child-div:hover {
+  background-color: #eee;
 }
 
 
@@ -122,126 +280,16 @@ export class AppComponent {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.module.ts]" value="import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-
-import { AppComponent } from './app.component';
-import { ItemDetailComponent } from './item-detail/item-detail.component';
-import { ClickDirective } from './click.directive';
-
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    ItemDetailComponent,
-    ClickDirective
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/click.directive.ts]" value="// tslint:disable: directive-selector
-import { Directive, ElementRef, EventEmitter, Output } from '@angular/core';
-
-@Directive({selector: '[myClick]'})
-export class ClickDirective {
-  @Output('myClick') clicks = new EventEmitter<string>(); //  @Output(alias) propertyName = ...
-
-  toggle = false;
-
-  constructor(el: ElementRef) {
-    el.nativeElement
-      .addEventListener('click', (event: Event) => {
-        this.toggle = !this.toggle;
-        this.clicks.emit(this.toggle ? 'Click!' : '');
-      });
-  }
+*/"><input type="hidden" name="files[src/app/item-detail/item-detail.component.css]" value=".detail {
+  border: 1px solid rgb(25, 118, 210);
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/item.ts]" value="export class Item {
-  name: '';
-}
-
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/environments/environment.prod.ts]" value="export const environment = {
-  production: true
-};
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/environments/environment.ts]" value="// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
-export const environment = {
-  production: false
-};
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/item-detail/item-detail.component.ts]" value="/* tslint:disable use-input-property-decorator use-output-property-decorator */
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-import { Item } from '../item';
-
-@Component({
-  selector: 'app-item-detail',
-  styleUrls: ['./item-detail.component.css'],
-  templateUrl: './item-detail.component.html'
-})
-export class ItemDetailComponent {
-
-  @Input() item;
-  itemImageUrl = 'assets/teapot.svg';
-  lineThrough = '';
-  displayNone = '';
-  @Input() prefix = '';
-
-  // This component makes a request but it can't actually delete a hero.
-  @Output() deleteRequest = new EventEmitter<Item>();
-
-  delete() {
-    this.deleteRequest.emit(this.item);
-    this.displayNone = this.displayNone ? '' : 'none';
-    this.lineThrough = this.lineThrough ? '' : 'line-through';
-  }
-
+img {
+  max-width: 100px;
+  display: block;
+  padding: 1rem 0;
 }
 
 
@@ -320,74 +368,7 @@ nav a.active {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.component.css]" value=".group {
-  background-color: #dae8f9;
-  padding: 1rem;
-  margin: 1rem 0;
-}
-
-.parent-div {
-  background-color: #bdd1f7;
-  border: solid 1px rgb(25, 118, 210);
-  padding: 1rem;
-}
-
-.parent-div:hover {
-  background-color: #8fb4f9;
-}
-
-.child-div {
-  margin-top: 1rem;
-  background-color: #fff;
-  padding: 1rem;
-}
-
-.child-div:hover {
-  background-color: #eee;
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/item-detail/item-detail.component.css]" value=".detail {
-  border: 1px solid rgb(25, 118, 210);
-  padding: 1rem;
-  margin: 1rem 0;
-}
-
-img {
-  max-width: 100px;
-  display: block;
-  padding: 1rem 0;
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/index.html]" value="<!doctype html>
-<html lang=&quot;en&quot;>
-<head>
-  <meta charset=&quot;utf-8&quot;>
-  <title>EventBinding</title>
-  <base href=&quot;/&quot;>
-  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
-  <link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot;>
-</head>
-<body>
-  <app-root></app-root>
-</body>
-</html>
-
-
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
--->"><input type="hidden" name="files[src/app/app.component.html]" value="<h1 id=&quot;event-binding&quot;>Event Binding</h1>
+*/"><input type="hidden" name="files[src/app/app.component.html]" value="<h1 id=&quot;event-binding&quot;>Event Binding</h1>
 
 <div class=&quot;group&quot;>
   <h3>Target event</h3>
@@ -443,6 +424,25 @@ can be found in the LICENSE file at https://angular.io/license
   </span>
   <button (click)=&quot;delete()&quot;>Delete</button>
 </div>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->"><input type="hidden" name="files[src/index.html]" value="<!doctype html>
+<html lang=&quot;en&quot;>
+<head>
+  <meta charset=&quot;utf-8&quot;>
+  <title>EventBinding</title>
+  <base href=&quot;/&quot;>
+  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
+  <link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot;>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
 
 
 <!-- 

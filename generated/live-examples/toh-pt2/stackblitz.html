@@ -1,5 +1,139 @@
 <html lang="en"><head></head><body>
-        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/heroes/heroes.component.html" target="_self"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
+        <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1?file=src/app/heroes/heroes.component.html" target="_self"><input type="hidden" name="files[src/app/app.component.ts]" value="import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'Tour of Heroes';
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/app.module.ts]" value="import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+import { HeroesComponent } from './heroes/heroes.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeroesComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/hero.ts]" value="export interface Hero {
+  id: number;
+  name: string;
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/heroes/heroes.component.ts]" value="import { Component, OnInit } from '@angular/core';
+import { Hero } from '../hero';
+import { HEROES } from '../mock-heroes';
+
+@Component({
+  selector: 'app-heroes',
+  templateUrl: './heroes.component.html',
+  styleUrls: ['./heroes.component.css']
+})
+
+export class HeroesComponent implements OnInit {
+
+  heroes = HEROES;
+  selectedHero: Hero;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
+}
+
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/mock-heroes.ts]" value="import { Hero } from './hero';
+
+export const HEROES: Hero[] = [
+  { id: 11, name: 'Dr Nice' },
+  { id: 12, name: 'Narco' },
+  { id: 13, name: 'Bombasto' },
+  { id: 14, name: 'Celeritas' },
+  { id: 15, name: 'Magneta' },
+  { id: 16, name: 'RubberMan' },
+  { id: 17, name: 'Dynama' },
+  { id: 18, name: 'Dr IQ' },
+  { id: 19, name: 'Magma' },
+  { id: 20, name: 'Tornado' }
+];
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/environments/environment.prod.ts]" value="export const environment = {
+  production: true
+};
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/environments/environment.ts]" value="// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
+
+export const environment = {
+  production: false
+};
+
+/*
+ * For easier debugging in development mode, you can import the following file
+ * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
+ *
+ * This import should be commented out in production mode because it will have a negative impact
+ * on performance if an error is thrown.
+ */
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/main.ts]" value="import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
@@ -87,134 +221,56 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.component.ts]" value="import { Component } from '@angular/core';
+*/"><input type="hidden" name="files[src/app/app.component.css]" value="
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent {
-  title = 'Tour of Heroes';
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/heroes/heroes.component.css]" value="/* HeroesComponent's private CSS styles */
+.heroes {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
 }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.module.ts]" value="import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    HeroesComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/hero.ts]" value="export interface Hero {
-  id: number;
-  name: string;
+.heroes li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
 }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/mock-heroes.ts]" value="import { Hero } from './hero';
-
-export const HEROES: Hero[] = [
-  { id: 11, name: 'Dr Nice' },
-  { id: 12, name: 'Narco' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' },
-  { id: 16, name: 'RubberMan' },
-  { id: 17, name: 'Dynama' },
-  { id: 18, name: 'Dr IQ' },
-  { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' }
-];
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/environments/environment.prod.ts]" value="export const environment = {
-  production: true
-};
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/environments/environment.ts]" value="// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
-export const environment = {
-  production: false
-};
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/heroes/heroes.component.ts]" value="import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
-import { HEROES } from '../mock-heroes';
-
-@Component({
-  selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
-})
-
-export class HeroesComponent implements OnInit {
-
-  heroes = HEROES;
-  selectedHero: Hero;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
+.heroes li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
 }
-
+.heroes li.selected {
+  background-color: #CFD8DC;
+  color: white;
+}
+.heroes li.selected:hover {
+  background-color: #BBD8DC;
+  color: white;
+}
+.heroes .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color:#405061;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
 
 
 /*
@@ -292,82 +348,7 @@ nav a.active {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app.component.css]" value="
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/heroes/heroes.component.css]" value="/* HeroesComponent's private CSS styles */
-.heroes {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
-  width: 15em;
-}
-.heroes li {
-  cursor: pointer;
-  position: relative;
-  left: 0;
-  background-color: #EEE;
-  margin: .5em;
-  padding: .3em 0;
-  height: 1.6em;
-  border-radius: 4px;
-}
-.heroes li:hover {
-  color: #607D8B;
-  background-color: #DDD;
-  left: .1em;
-}
-.heroes li.selected {
-  background-color: #CFD8DC;
-  color: white;
-}
-.heroes li.selected:hover {
-  background-color: #BBD8DC;
-  color: white;
-}
-.heroes .badge {
-  display: inline-block;
-  font-size: small;
-  color: white;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color:#405061;
-  line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/index.html]" value="<!doctype html>
-<html lang=&quot;en&quot;>
-<head>
-  <meta charset=&quot;utf-8&quot;>
-  <title>Tour of Heroes</title>
-  <base href=&quot;/&quot;>
-  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
-  <link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot;>
-</head>
-<body>
-  <app-root></app-root>
-</body>
-</html>
-
-
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
--->"><input type="hidden" name="files[src/app/app.component.html]" value="<h1>{{title}}</h1>
+*/"><input type="hidden" name="files[src/app/app.component.html]" value="<h1>{{title}}</h1>
 <app-heroes></app-heroes>
 
 
@@ -395,6 +376,25 @@ can be found in the LICENSE file at https://angular.io/license
   </div>
 
 </div>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->"><input type="hidden" name="files[src/index.html]" value="<!doctype html>
+<html lang=&quot;en&quot;>
+<head>
+  <meta charset=&quot;utf-8&quot;>
+  <title>Tour of Heroes</title>
+  <base href=&quot;/&quot;>
+  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
+  <link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot;>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
 
 
 <!-- 
