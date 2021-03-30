@@ -1233,14 +1233,14 @@
     "patch": 0,
     "prerelease": [
       "build",
-      "294"
+      "295"
     ],
-    "build": "sha.911d708c",
-    "version": "11.1.0-build.294",
+    "build": "sha.92bf21fe",
+    "version": "11.1.0-build.295",
     "codeName": "snapshot",
     "isSnapshot": true,
-    "full": "11.1.0-build.294+sha.911d708c",
+    "full": "11.1.0-build.295+sha.92bf21fe",
     "branch": "master",
-    "commitSHA": "911d708c7c4e8a6c7cc02cc1c5fba24d0cdc673a"
+    "commitSHA": "92bf21fe29a22ab8c09785670963c14a5686224f"
   }
 }
