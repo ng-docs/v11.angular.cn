@@ -1233,14 +1233,14 @@
     "patch": 0,
     "prerelease": [
       "build",
-      "295"
+      "296"
     ],
-    "build": "sha.92bf21fe",
-    "version": "11.1.0-build.295",
+    "build": "sha.61b158c2",
+    "version": "11.1.0-build.296",
     "codeName": "snapshot",
     "isSnapshot": true,
-    "full": "11.1.0-build.295+sha.92bf21fe",
+    "full": "11.1.0-build.296+sha.61b158c2",
     "branch": "master",
-    "commitSHA": "92bf21fe29a22ab8c09785670963c14a5686224f"
+    "commitSHA": "61b158c2dde1cd644dd801388f48df785dd1ea11"
   }
 }
