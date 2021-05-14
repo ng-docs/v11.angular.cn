@@ -402,6 +402,22 @@
         "securityRisk": false
       },
       {
+        "name": "httpcontext",
+        "title": "HttpContext",
+        "path": "api/common/http/HttpContext",
+        "docType": "class",
+        "stability": "stable",
+        "securityRisk": false
+      },
+      {
+        "name": "httpcontexttoken",
+        "title": "HttpContextToken",
+        "path": "api/common/http/HttpContextToken",
+        "docType": "class",
+        "stability": "stable",
+        "securityRisk": false
+      },
+      {
         "name": "httpdownloadprogressevent",
         "title": "HttpDownloadProgressEvent",
         "path": "api/common/http/HttpDownloadProgressEvent",
@@ -530,6 +546,14 @@
         "securityRisk": false
       },
       {
+        "name": "httpstatuscode",
+        "title": "HttpStatusCode",
+        "path": "api/common/http/HttpStatusCode",
+        "docType": "enum",
+        "stability": "stable",
+        "securityRisk": false
+      },
+      {
         "name": "httpuploadprogressevent",
         "title": "HttpUploadProgressEvent",
         "path": "api/common/http/HttpUploadProgressEvent",
@@ -589,8 +613,8 @@
         "name": "xhrfactory",
         "title": "XhrFactory",
         "path": "api/common/http/XhrFactory",
-        "docType": "class",
-        "stability": "stable",
+        "docType": "type-alias",
+        "stability": "deprecated",
         "securityRisk": false
       }
     ]
@@ -1278,6 +1302,14 @@
         "docType": "enum",
         "stability": "stable",
         "securityRisk": false
+      },
+      {
+        "name": "xhrfactory",
+        "title": "XhrFactory",
+        "path": "api/common/XhrFactory",
+        "docType": "class",
+        "stability": "stable",
+        "securityRisk": false
       }
     ]
   },
@@ -1488,7 +1520,7 @@
         "name": "applicationref",
         "title": "ApplicationRef",
         "path": "api/core/ApplicationRef",
-        "docType": "interface",
+        "docType": "class",
         "stability": "stable",
         "securityRisk": false
       },
@@ -1903,7 +1935,7 @@
       {
         "name": "inject",
         "title": "inject",
-        "path": "api/core/inject",
+        "path": "api/core/inject-0",
         "docType": "const",
         "stability": "stable",
         "securityRisk": false
@@ -1911,7 +1943,7 @@
       {
         "name": "inject",
         "title": "Inject",
-        "path": "api/core/Inject",
+        "path": "api/core/Inject-1",
         "docType": "decorator",
         "stability": "stable",
         "securityRisk": false
@@ -1959,7 +1991,7 @@
       {
         "name": "injector",
         "title": "Injector",
-        "path": "api/core/Injector",
+        "path": "api/core/Injector-0",
         "docType": "class",
         "stability": "stable",
         "securityRisk": false
@@ -1967,7 +1999,7 @@
       {
         "name": "injector",
         "title": "INJECTOR",
-        "path": "api/core/INJECTOR",
+        "path": "api/core/INJECTOR-1",
         "docType": "const",
         "stability": "stable",
         "securityRisk": false
@@ -2264,7 +2296,7 @@
         "name": "platformref",
         "title": "PlatformRef",
         "path": "api/core/PlatformRef",
-        "docType": "interface",
+        "docType": "class",
         "stability": "stable",
         "securityRisk": false
       },
@@ -2280,6 +2312,14 @@
         "name": "provider",
         "title": "Provider",
         "path": "api/core/Provider",
+        "docType": "type-alias",
+        "stability": "stable",
+        "securityRisk": false
+      },
+      {
+        "name": "providertoken",
+        "title": "ProviderToken",
+        "path": "api/core/ProviderToken",
         "docType": "type-alias",
         "stability": "stable",
         "securityRisk": false
@@ -2628,6 +2668,22 @@
     "path": "api/core/global",
     "items": [
       {
+        "name": "componentdebugmetadata",
+        "title": "ComponentDebugMetadata",
+        "path": "api/core/global/ComponentDebugMetadata",
+        "docType": "interface",
+        "stability": "stable",
+        "securityRisk": false
+      },
+      {
+        "name": "directivedebugmetadata",
+        "title": "DirectiveDebugMetadata",
+        "path": "api/core/global/DirectiveDebugMetadata",
+        "docType": "interface",
+        "stability": "stable",
+        "securityRisk": false
+      },
+      {
         "name": "listener",
         "title": "Listener",
         "path": "api/core/global/Listener",
@@ -2655,6 +2711,14 @@
         "name": "ng.getcontext",
         "title": "ng.getContext",
         "path": "api/core/global/ngGetContext",
+        "docType": "function",
+        "stability": "stable",
+        "securityRisk": false
+      },
+      {
+        "name": "ng.getdirectivemetadata",
+        "title": "ng.getDirectiveMetadata",
+        "path": "api/core/global/ngGetDirectiveMetadata",
         "docType": "function",
         "stability": "stable",
         "securityRisk": false
@@ -3153,9 +3217,25 @@
         "securityRisk": false
       },
       {
+        "name": "maxvalidator",
+        "title": "MaxValidator",
+        "path": "api/forms/MaxValidator",
+        "docType": "directive",
+        "stability": "stable",
+        "securityRisk": false
+      },
+      {
         "name": "minlengthvalidator",
         "title": "MinLengthValidator",
         "path": "api/forms/MinLengthValidator",
+        "docType": "directive",
+        "stability": "stable",
+        "securityRisk": false
+      },
+      {
+        "name": "minvalidator",
+        "title": "MinValidator",
+        "path": "api/forms/MinValidator",
         "docType": "directive",
         "stability": "stable",
         "securityRisk": false
@@ -3333,6 +3413,44 @@
         "title": "Validators",
         "path": "api/forms/Validators",
         "docType": "class",
+        "stability": "stable",
+        "securityRisk": false
+      }
+    ]
+  },
+  {
+    "name": "localize",
+    "title": "localize",
+    "path": "api/localize",
+    "items": [
+      {
+        "name": "cleartranslations",
+        "title": "clearTranslations",
+        "path": "api/localize/clearTranslations",
+        "docType": "function",
+        "stability": "stable",
+        "securityRisk": false
+      },
+      {
+        "name": "loadtranslations",
+        "title": "loadTranslations",
+        "path": "api/localize/loadTranslations",
+        "docType": "function",
+        "stability": "stable",
+        "securityRisk": false
+      }
+    ]
+  },
+  {
+    "name": "localize/init",
+    "title": "localize/init",
+    "path": "api/localize/init",
+    "items": [
+      {
+        "name": "$localize",
+        "title": "$localize",
+        "path": "api/localize/init/$localize",
+        "docType": "const",
         "stability": "stable",
         "securityRisk": false
       }
@@ -3575,6 +3693,14 @@
         "securityRisk": false
       },
       {
+        "name": "browseranimationsmoduleconfig",
+        "title": "BrowserAnimationsModuleConfig",
+        "path": "api/platform-browser/animations/BrowserAnimationsModuleConfig",
+        "docType": "interface",
+        "stability": "stable",
+        "securityRisk": false
+      },
+      {
         "name": "noopanimationsmodule",
         "title": "NoopAnimationsModule",
         "path": "api/platform-browser/animations/NoopAnimationsModule",
@@ -3749,6 +3875,12 @@
     ]
   },
   {
+    "name": "platform-server/init",
+    "title": "platform-server/init",
+    "path": "api/platform-server/init",
+    "items": []
+  },
+  {
     "name": "platform-server/testing",
     "title": "platform-server/testing",
     "path": "api/platform-server/testing",
@@ -3780,7 +3912,7 @@
         "name": "activatedroute",
         "title": "ActivatedRoute",
         "path": "api/router/ActivatedRoute",
-        "docType": "interface",
+        "docType": "class",
         "stability": "stable",
         "securityRisk": false
       },
@@ -3788,7 +3920,7 @@
         "name": "activatedroutesnapshot",
         "title": "ActivatedRouteSnapshot",
         "path": "api/router/ActivatedRouteSnapshot",
-        "docType": "interface",
+        "docType": "class",
         "stability": "stable",
         "securityRisk": false
       },
@@ -3949,6 +4081,14 @@
         "title": "InitialNavigation",
         "path": "api/router/InitialNavigation",
         "docType": "type-alias",
+        "stability": "stable",
+        "securityRisk": false
+      },
+      {
+        "name": "isactivematchoptions",
+        "title": "IsActiveMatchOptions",
+        "path": "api/router/IsActiveMatchOptions",
+        "docType": "interface",
         "stability": "stable",
         "securityRisk": false
       },
@@ -4233,6 +4373,14 @@
         "securityRisk": false
       },
       {
+        "name": "routeroutletcontract",
+        "title": "RouterOutletContract",
+        "path": "api/router/RouterOutletContract",
+        "docType": "interface",
+        "stability": "stable",
+        "securityRisk": false
+      },
+      {
         "name": "routerpreloader",
         "title": "RouterPreloader",
         "path": "api/router/RouterPreloader",
@@ -4244,7 +4392,7 @@
         "name": "routerstate",
         "title": "RouterState",
         "path": "api/router/RouterState",
-        "docType": "interface",
+        "docType": "class",
         "stability": "stable",
         "securityRisk": false
       },
@@ -4252,14 +4400,14 @@
         "name": "routerstatesnapshot",
         "title": "RouterStateSnapshot",
         "path": "api/router/RouterStateSnapshot",
-        "docType": "interface",
+        "docType": "class",
         "stability": "stable",
         "securityRisk": false
       },
       {
         "name": "routes",
         "title": "Routes",
-        "path": "api/router/Routes",
+        "path": "api/router/Routes-0",
         "docType": "type-alias",
         "stability": "stable",
         "securityRisk": false
@@ -4267,7 +4415,7 @@
       {
         "name": "routes",
         "title": "ROUTES",
-        "path": "api/router/ROUTES",
+        "path": "api/router/ROUTES-1",
         "docType": "const",
         "stability": "stable",
         "securityRisk": false
@@ -4356,7 +4504,7 @@
         "name": "urltree",
         "title": "UrlTree",
         "path": "api/router/UrlTree",
-        "docType": "interface",
+        "docType": "class",
         "stability": "stable",
         "securityRisk": false
       }

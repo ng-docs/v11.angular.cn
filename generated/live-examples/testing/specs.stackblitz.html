@@ -24,7 +24,7 @@ declare var jasmine;
 
 import './polyfills';
 
-import 'zone.js/dist/zone-testing';
+import 'zone.js/testing';
 
 import { getTestBed } from '@angular/core/testing';
 import {
@@ -63,38 +63,52 @@ Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="files[src/styles.css]" value="/* Global Styles */
-h1 {
-  color: #369;
+* {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+}
+h1 {
+  color: #264D73;
+  font-size: 2.5rem;
 }
 h2, h3 {
   color: #444;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
-body {
-  margin: 2em;
+h3 {
+  font-size: 1.3rem;
 }
-body, input[text], button {
+body {
+  padding: .5rem;
+  max-width: 1000px;
+  margin: auto;
+}
+@media (min-width: 600px) {
+  body {
+    padding: 2rem;
+  }
+}
+body, input[text] {
   color: #333;
-  font-family: Cambria, Georgia;
+  font-family: Cambria, Georgia, serif;
 }
 a {
   cursor: pointer;
-  cursor: hand;
 }
 button {
-  font-family: Arial;
   background-color: #eee;
   border: none;
-  padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
-  cursor: hand;
+  color: black;
+  font-size: 1.2rem;
+  padding: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 button:hover {
-  background-color: #cfd8dc;
+  background-color: black;
+  color: white;
 }
 button:disabled {
   background-color: #eee;
@@ -109,23 +123,26 @@ nav a {
   margin-right: 10px;
   margin-top: 10px;
   display: inline-block;
-  background-color: #eee;
+  background-color: #e8e8e8;
+  color: #3d3d3d;
   border-radius: 4px;
 }
-nav a:visited, a:link {
-  color: #607D8B;
-}
+
 nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
+  color: white;
+  background-color:  #42545C;
 }
 nav a.active {
-  color: #039be5;
+  background-color: black;
+  color: white;
 }
-
-/* everywhere else */
-* {
-  font-family: Arial, Helvetica, sans-serif;
+hr {
+  margin: 1.5rem 0;
+}
+input[type=&quot;text&quot;] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: .5rem;
 }
 
 
@@ -216,9 +233,7 @@ can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="files[src/app/dashboard/dashboard.component.css]" value="[class*='col-'] {
   float: left;
 }
-*, *:after, *:before {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+*, *::after, *::before {
 	box-sizing: border-box;
 }
 h3 {
@@ -269,13 +284,12 @@ input {
 }
 button {
   margin-top: 20px;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background-color: #eee;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
-  cursor: hand;
 }
 button:hover {
   background-color: #cfd8dc;
@@ -339,13 +353,12 @@ can be found in the LICENSE file at https://angular.io/license
   border-radius: 4px 0 0 4px;
 }
 button {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background-color: #eee;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
-  cursor: hand;
 }
 button:hover {
   background-color: #cfd8dc;
@@ -428,52 +441,7 @@ can be found in the LICENSE file at https://angular.io/license
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
--->"><input type="hidden" name="files[src/app/about/about.component.spec.ts]" value="import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AboutComponent } from './about.component';
-import { HighlightDirective } from '../shared/highlight.directive';
-
-let fixture: ComponentFixture<AboutComponent>;
-
-describe('AboutComponent (highlightDirective)', () => {
-  beforeEach(() => {
-    fixture = TestBed.configureTestingModule({
-      declarations: [ AboutComponent, HighlightDirective ],
-      schemas:      [ NO_ERRORS_SCHEMA ]
-    })
-    .createComponent(AboutComponent);
-    fixture.detectChanges(); // initial binding
-  });
-
-  it('should have skyblue <h2>', () => {
-    const h2: HTMLElement = fixture.nativeElement.querySelector('h2');
-    const bgColor = h2.style.backgroundColor;
-    expect(bgColor).toBe('skyblue');
-  });
-});
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/about/about.component.ts]" value="import { Component } from '@angular/core';
-@Component({
-  template: `
-  <h2 highlight=&quot;skyblue&quot;>About</h2>
-  <h3>Quote of the day:</h3>
-  <twain-quote></twain-quote>
-  `
-})
-export class AboutComponent { }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/app-initial.component.spec.ts]" value="import { TestBed, waitForAsync } from '@angular/core/testing';
+-->"><input type="hidden" name="files[src/app/app-initial.component.spec.ts]" value="import { TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app-initial.component';
 /*
 import { AppComponent } from './app.component';
@@ -981,7 +949,104 @@ export class AppModule { }
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/banner/banner-external.component.spec.ts]" value="import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+*/"><input type="hidden" name="files[src/app/dummy.module.ts]" value="// These unused NgModules keep the Angular Language Service happy.
+// The AppModule registers the final versions of these components
+import { NgModule } from '@angular/core';
+
+import { AppComponent as app_initial } from './app-initial.component';
+@NgModule({ declarations: [ app_initial ] })
+export class AppModuleInitial {}
+
+import { BannerComponent as bc_initial } from './banner/banner-initial.component';
+@NgModule({ declarations: [ bc_initial ] })
+export class BannerModuleInitial {}
+
+import { BannerComponent as bc_external } from './banner/banner-external.component';
+@NgModule({ declarations: [ bc_external ] })
+export class BannerModuleExternal {}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/in-memory-data.service.ts]" value="import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { QUOTES } from './twain/twain.data';
+
+// Adjust to reduce number of quotes
+const maxQuotes = Infinity; // 0;
+
+/** Create in-memory database of heroes and quotes */
+export class InMemoryDataService implements InMemoryDbService {
+  createDb() {
+    const heroes = [
+      { id: 11, name: 'Dr Nice' },
+      { id: 12, name: 'Narco' },
+      { id: 13, name: 'Bombasto' },
+      { id: 14, name: 'Celeritas' },
+      { id: 15, name: 'Magneta' },
+      { id: 16, name: 'RubberMan' },
+      { id: 17, name: 'Dynama' },
+      { id: 18, name: 'Dr IQ' },
+      { id: 19, name: 'Magma' },
+      { id: 20, name: 'Tornado' }
+    ];
+
+    return { heroes, quotes: QUOTES.slice(0, maxQuotes) };
+  }
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/about/about.component.spec.ts]" value="import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { AboutComponent } from './about.component';
+import { HighlightDirective } from '../shared/highlight.directive';
+
+let fixture: ComponentFixture<AboutComponent>;
+
+describe('AboutComponent (highlightDirective)', () => {
+  beforeEach(() => {
+    fixture = TestBed.configureTestingModule({
+      declarations: [ AboutComponent, HighlightDirective ],
+      schemas:      [ NO_ERRORS_SCHEMA ]
+    })
+    .createComponent(AboutComponent);
+    fixture.detectChanges(); // initial binding
+  });
+
+  it('should have skyblue <h2>', () => {
+    const h2: HTMLElement = fixture.nativeElement.querySelector('h2');
+    const bgColor = h2.style.backgroundColor;
+    expect(bgColor).toBe('skyblue');
+  });
+});
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/about/about.component.ts]" value="import { Component } from '@angular/core';
+@Component({
+  template: `
+  <h2 highlight=&quot;skyblue&quot;>About</h2>
+  <h3>Quote of the day:</h3>
+  <twain-quote></twain-quote>
+  `
+})
+export class AboutComponent { }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/banner/banner-external.component.spec.ts]" value="import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
@@ -993,13 +1058,13 @@ describe('BannerComponent (external files)', () => {
   let h1: HTMLElement;
 
   describe('Two beforeEach', () => {
-    beforeEach(waitForAsync(() => {
+    beforeEach(async () => {
       TestBed
           .configureTestingModule({
             declarations: [BannerComponent],
           })
           .compileComponents();  // compile template and css
-    }));
+    });
 
     // synchronous beforeEach
     beforeEach(() => {
@@ -1012,18 +1077,14 @@ describe('BannerComponent (external files)', () => {
   });
 
   describe('One beforeEach', () => {
-    beforeEach(waitForAsync(() => {
-      TestBed
-          .configureTestingModule({
-            declarations: [BannerComponent],
-          })
-          .compileComponents()
-          .then(() => {
-            fixture = TestBed.createComponent(BannerComponent);
-            component = fixture.componentInstance;
-            h1 = fixture.nativeElement.querySelector('h1');
-          });
-    }));
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        declarations: [BannerComponent],
+      }).compileComponents();
+      fixture = TestBed.createComponent(BannerComponent);
+      component = fixture.componentInstance;
+      h1 = fixture.nativeElement.querySelector('h1');
+    });
 
     tests();
   });
@@ -1069,8 +1130,8 @@ Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="files[src/app/banner/banner-initial.component.spec.ts]" value="import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 
+import { By } from '@angular/platform-browser';
 import { BannerComponent } from './banner-initial.component';
 
 /*
@@ -1224,8 +1285,8 @@ describe('BannerComponent (inline template)', () => {
   let fixture: ComponentFixture<BannerComponent>;
   let h1: HTMLElement;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [ BannerComponent ],
     });
     fixture = TestBed.createComponent(BannerComponent);
@@ -1710,9 +1771,9 @@ Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="files[src/app/demo/async-helper.spec.ts]" value="// tslint:disable-next-line:no-unused-variable
-import { fakeAsync, tick, waitForAsync } from '@angular/core/testing';
-import { interval, of } from 'rxjs';
-import { delay, take } from 'rxjs/operators';
+import {fakeAsync, tick, waitForAsync} from '@angular/core/testing';
+import {interval, of} from 'rxjs';
+import {delay, take} from 'rxjs/operators';
 
 describe('Angular async helper', () => {
   describe('async', () => {
@@ -1833,7 +1894,7 @@ describe('Angular async helper', () => {
        }));
 
     it('should get Date diff correctly in fakeAsync with rxjs scheduler', fakeAsync(() => {
-         // need to add `import 'zone.js/dist/zone-patch-rxjs-fake-async'
+         // need to add `import 'zone.js/plugins/zone-patch-rxjs-fake-async'
          // to patch rxjs scheduler
          let result = null;
          of('hello').pipe(delay(1000)).subscribe(v => {
@@ -1856,7 +1917,7 @@ describe('Angular async helper', () => {
 
   describe('use jasmine.clock()', () => {
     // need to config __zone_symbol__fakeAsyncPatchLock flag
-    // before loading zone.js/dist/zone-testing
+    // before loading zone.js/testing
     beforeEach(() => {
       jasmine.clock().install();
     });
@@ -1879,10 +1940,10 @@ describe('Angular async helper', () => {
       // do a jsonp call which is not zone aware
     }
     // need to config __zone_symbol__supportWaitUnResolvedChainedPromise flag
-    // before loading zone.js/dist/zone-testing
+    // before loading zone.js/testing
     it('should wait until promise.then is called', waitForAsync(() => {
          let finished = false;
-         new Promise((res, rej) => {
+         new Promise<void>(res => {
            jsonp('localhost:8080/jsonp', () => {
              // success callback and resolve the promise
              finished = true;
@@ -2014,7 +2075,6 @@ describe('demo (no TestBed):', () => {
       return { masterService, stubValue, valueServiceSpy };
     }
   });
-
 
   describe('ReversePipe', () => {
     let pipe: ReversePipe;
@@ -2274,7 +2334,6 @@ describe('demo (with TestBed):', () => {
       expect(rowComp).toEqual(jasmine.any(IoComponent), 'component is IoComp');
       expect(rowComp.hero.name).toBe(heroName, 'component.hero');
     });
-
 
     it('should support clicking a button', () => {
       const fixture = TestBed.createComponent(LightswitchComponent);
@@ -2661,7 +2720,7 @@ describe('demo (with TestBed):', () => {
 
       child.childValue = 'bar';
 
-      return new Promise(resolve => {
+      return new Promise<void>(resolve => {
         // Wait one JS engine turn!
         setTimeout(() => resolve(), 0);
       })
@@ -3187,27 +3246,6 @@ export class DemoModule { }
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/dummy.module.ts]" value="// These unused NgModules keep the Angular Language Service happy.
-// The AppModule registers the final versions of these components
-import { NgModule } from '@angular/core';
-
-import { AppComponent as app_initial } from './app-initial.component';
-@NgModule({ declarations: [ app_initial ] })
-export class AppModuleInitial {}
-
-import { BannerComponent as bc_initial } from './banner/banner-initial.component';
-@NgModule({ declarations: [ bc_initial ] })
-export class BannerModuleInitial {}
-
-import { BannerComponent as bc_external } from './banner/banner-external.component';
-@NgModule({ declarations: [ bc_external ] })
-export class BannerModuleExternal {}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="files[src/app/hero/hero-detail.component.no-testbed.spec.ts]" value="import { asyncData, ActivatedRouteStub } from '../../testing';
 
 import { HeroDetailComponent } from './hero-detail.component';
@@ -3317,10 +3355,10 @@ function overrideSetup() {
   // the `id` value is irrelevant because ignored by service stub
   beforeEach(() => activatedRoute.setParamMap({id: 99999}));
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     const routerSpy = createRouterSpy();
 
-    TestBed
+    await TestBed
         .configureTestingModule({
           imports: [HeroModule],
           providers: [
@@ -3337,15 +3375,15 @@ function overrideSetup() {
             {set: {providers: [{provide: HeroDetailService, useClass: HeroDetailServiceSpy}]}})
 
         .compileComponents();
-  }));
+  });
 
   let hdsSpy: HeroDetailServiceSpy;
 
-  beforeEach(waitForAsync(() => {
-    createComponent();
+  beforeEach(async () => {
+    await createComponent();
     // get the component's injected HeroDetailServiceSpy
     hdsSpy = fixture.debugElement.injector.get(HeroDetailService) as any;
-  }));
+  });
 
   it('should have called `getHero`', () => {
     expect(hdsSpy.getHero.calls.count()).toBe(1, 'getHero called once');
@@ -3392,10 +3430,10 @@ import { getTestHeroes, TestHeroService, HeroService } from '../model/testing/te
 const firstHero = getTestHeroes()[0];
 
 function heroModuleSetup() {
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     const routerSpy = createRouterSpy();
 
-    TestBed
+    await TestBed
         .configureTestingModule({
           imports: [HeroModule],
           //  declarations: [ HeroDetailComponent ], // NO!  DOUBLE DECLARATION
@@ -3406,16 +3444,16 @@ function heroModuleSetup() {
           ]
         })
         .compileComponents();
-  }));
+  });
 
   describe('when navigate to existing hero', () => {
     let expectedHero: Hero;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(async () => {
       expectedHero = firstHero;
       activatedRoute.setParamMap({id: expectedHero.id});
-      createComponent();
-    }));
+      await createComponent();
+    });
 
     it('should display that hero\'s name', () => {
       expect(page.nameDisplay.textContent).toBe(expectedHero.name);
@@ -3465,7 +3503,9 @@ function heroModuleSetup() {
   });
 
   describe('when navigate with no hero id', () => {
-    beforeEach(waitForAsync(createComponent));
+    beforeEach(async () => {
+      await createComponent();
+    });
 
     it('should have hero.id === 0', () => {
       expect(component.hero.id).toBe(0);
@@ -3477,10 +3517,10 @@ function heroModuleSetup() {
   });
 
   describe('when navigate to non-existent hero id', () => {
-    beforeEach(waitForAsync(() => {
+    beforeEach(async () => {
       activatedRoute.setParamMap({id: 99999});
-      createComponent();
-    }));
+      await createComponent();
+    });
 
     it('should try to navigate back to hero list', () => {
       expect(page.gotoListSpy.calls.any()).toBe(true, 'comp.gotoList called');
@@ -3509,10 +3549,10 @@ import { FormsModule } from '@angular/forms';
 import { TitleCasePipe } from '../shared/title-case.pipe';
 
 function formsModuleSetup() {
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     const routerSpy = createRouterSpy();
 
-    TestBed
+    await TestBed
         .configureTestingModule({
           imports: [FormsModule],
           declarations: [HeroDetailComponent, TitleCasePipe],
@@ -3523,7 +3563,7 @@ function formsModuleSetup() {
           ]
         })
         .compileComponents();
-  }));
+  });
 
   it('should display 1st hero\'s name', waitForAsync(() => {
        const expectedHero = firstHero;
@@ -3538,10 +3578,10 @@ function formsModuleSetup() {
 import { SharedModule } from '../shared/shared.module';
 
 function sharedModuleSetup() {
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     const routerSpy = createRouterSpy();
 
-    TestBed
+    await TestBed
         .configureTestingModule({
           imports: [SharedModule],
           declarations: [HeroDetailComponent],
@@ -3552,7 +3592,7 @@ function sharedModuleSetup() {
           ]
         })
         .compileComponents();
-  }));
+  });
 
   it('should display 1st hero\'s name', waitForAsync(() => {
        const expectedHero = firstHero;
@@ -3948,37 +3988,6 @@ export class HeroModule { }
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/in-memory-data.service.ts]" value="import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { QUOTES } from './twain/twain.data';
-
-// Adjust to reduce number of quotes
-const maxQuotes = Infinity; // 0;
-
-/** Create in-memory database of heroes and quotes */
-export class InMemoryDataService implements InMemoryDbService {
-  createDb() {
-    const heroes = [
-      { id: 11, name: 'Dr Nice' },
-      { id: 12, name: 'Narco' },
-      { id: 13, name: 'Bombasto' },
-      { id: 14, name: 'Celeritas' },
-      { id: 15, name: 'Magneta' },
-      { id: 16, name: 'RubberMan' },
-      { id: 17, name: 'Dynama' },
-      { id: 18, name: 'Dr IQ' },
-      { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' }
-    ];
-
-    return { heroes, quotes: QUOTES.slice(0, maxQuotes) };
-  }
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="files[src/app/model/hero.service.spec.ts]" value="import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 // Other imports
@@ -4316,274 +4325,6 @@ export * from './user.service';
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/model/testing/http-client.spec.ts]" value="// Http testing module and mocking controller
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-
-// Other imports
-import { TestBed } from '@angular/core/testing';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-
-import { HttpHeaders } from '@angular/common/http';
-
-interface Data {
-  name: string;
-}
-
-const testUrl = '/data';
-
-describe('HttpClient testing', () => {
-  let httpClient: HttpClient;
-  let httpTestingController: HttpTestingController;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ]
-    });
-
-    // Inject the http service and test controller for each test
-    httpClient = TestBed.inject(HttpClient);
-    httpTestingController = TestBed.inject(HttpTestingController);
-  });
-  afterEach(() => {
-    // After every test, assert that there are no more pending requests.
-    httpTestingController.verify();
-  });
-  /// Tests begin ///
-  it('can test HttpClient.get', () => {
-    const testData: Data = {name: 'Test Data'};
-
-    // Make an HTTP GET request
-    httpClient.get<Data>(testUrl)
-      .subscribe(data =>
-        // When observable resolves, result should match test data
-        expect(data).toEqual(testData)
-      );
-
-    // The following `expectOne()` will match the request's URL.
-    // If no requests or multiple requests matched that URL
-    // `expectOne()` would throw.
-    const req = httpTestingController.expectOne('/data');
-
-    // Assert that the request is a GET.
-    expect(req.request.method).toEqual('GET');
-
-    // Respond with mock data, causing Observable to resolve.
-    // Subscribe callback asserts that correct data was returned.
-    req.flush(testData);
-
-    // Finally, assert that there are no outstanding requests.
-    httpTestingController.verify();
-  });
-  it('can test HttpClient.get with matching header', () => {
-    const testData: Data = {name: 'Test Data'};
-
-    // Make an HTTP GET request with specific header
-    httpClient.get<Data>(testUrl, {
-        headers: new HttpHeaders({Authorization: 'my-auth-token'})
-      })
-      .subscribe(data =>
-        expect(data).toEqual(testData)
-      );
-
-      // Find request with a predicate function.
-    // Expect one request with an authorization header
-    const req = httpTestingController.expectOne(
-      request => request.headers.has('Authorization')
-    );
-    req.flush(testData);
-  });
-
-  it('can test multiple requests', () => {
-    const testData: Data[] = [
-      { name: 'bob' }, { name: 'carol' },
-      { name: 'ted' }, { name: 'alice' }
-    ];
-
-    // Make three requests in a row
-    httpClient.get<Data[]>(testUrl)
-      .subscribe(d => expect(d.length).toEqual(0, 'should have no data'));
-
-    httpClient.get<Data[]>(testUrl)
-      .subscribe(d => expect(d).toEqual([testData[0]], 'should be one element array'));
-
-    httpClient.get<Data[]>(testUrl)
-      .subscribe(d => expect(d).toEqual(testData, 'should be expected data'));
-
-    // get all pending requests that match the given URL
-    const requests = httpTestingController.match(testUrl);
-    expect(requests.length).toEqual(3);
-
-    // Respond to each request with different results
-    requests[0].flush([]);
-    requests[1].flush([testData[0]]);
-    requests[2].flush(testData);
-  });
-
-  it('can test for 404 error', () => {
-    const emsg = 'deliberate 404 error';
-
-    httpClient.get<Data[]>(testUrl).subscribe(
-      data => fail('should have failed with the 404 error'),
-      (error: HttpErrorResponse) => {
-        expect(error.status).toEqual(404, 'status');
-        expect(error.error).toEqual(emsg, 'message');
-      }
-    );
-
-    const req = httpTestingController.expectOne(testUrl);
-
-    // Respond with mock error
-    req.flush(emsg, { status: 404, statusText: 'Not Found' });
-  });
-
-  it('can test for network error', () => {
-    const emsg = 'simulated network error';
-
-    httpClient.get<Data[]>(testUrl).subscribe(
-      data => fail('should have failed with the network error'),
-      (error: HttpErrorResponse) => {
-        expect(error.error.message).toEqual(emsg, 'message');
-      }
-    );
-
-    const req = httpTestingController.expectOne(testUrl);
-
-    // Create mock ErrorEvent, raised when something goes wrong at the network level.
-    // Connection timeout, DNS error, offline, etc
-    const errorEvent = new ErrorEvent('so sad', {
-      message: emsg,
-      // The rest of this is optional and not used.
-      // Just showing that you could provide this too.
-      filename: 'HeroService.ts',
-      lineno: 42,
-      colno: 21
-    });
-
-    // Respond with mock error
-    req.error(errorEvent);
-  });
-
-  it('httpTestingController.verify should fail if HTTP response not simulated', () => {
-    // Sends request
-    httpClient.get('some/api').subscribe();
-
-    // verify() should fail because haven't handled the pending request.
-    expect(() => httpTestingController.verify()).toThrow();
-
-    // Now get and flush the request so that afterEach() doesn't fail
-    const req = httpTestingController.expectOne('some/api');
-    req.flush(null);
-  });
-
-  // Proves that verify in afterEach() really would catch error
-  // if test doesn't simulate the HTTP response.
-  //
-  // Must disable this test because can't catch an error in an afterEach().
-  // Uncomment if you want to confirm that afterEach() does the job.
-  // it('afterEach() should fail when HTTP response not simulated',() => {
-  //   // Sends request which is never handled by this test
-  //   httpClient.get('some/api').subscribe();
-  // });
-});
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/model/testing/index.ts]" value="export * from './test-hero.service';
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/model/testing/test-hero.service.ts]" value="import { Injectable } from '@angular/core';
-
-import { Observable } from 'rxjs';
-import { asyncData } from '../../../testing';
-
-import { map } from 'rxjs/operators';
-
-// re-export for tester convenience
-export { Hero } from '../hero';
-export { HeroService } from '../hero.service';
-export { getTestHeroes } from './test-heroes';
-
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
-import { getTestHeroes } from './test-heroes';
-
-@Injectable()
-/**
- * FakeHeroService pretends to make real http requests.
- * implements only as much of HeroService as is actually consumed by the app
- */
-export class TestHeroService extends HeroService {
-
-  constructor() {
-    super(null);
-  }
-
-  heroes = getTestHeroes();
-  lastResult: Observable<any>; // result from last method call
-
-  addHero(hero: Hero): Observable<Hero> {
-    throw new Error('Method not implemented.');
-  }
-
-  deleteHero(hero: number | Hero): Observable<Hero> {
-    throw new Error('Method not implemented.');
-  }
-
-  getHeroes(): Observable<Hero[]> {
-    return this.lastResult = asyncData(this.heroes);
-  }
-
-  getHero(id: number | string): Observable<Hero> {
-    if (typeof id === 'string') {
-      id = parseInt(id, 10);
-    }
-    const hero = this.heroes.find(h => h.id === id);
-    return this.lastResult = asyncData(hero);
-  }
-
-  updateHero(hero: Hero): Observable<Hero> {
-    return this.lastResult = this.getHero(hero.id).pipe(
-      map(h => {
-        if (h) {
-          return Object.assign(h, hero);
-        }
-        throw new Error(`Hero ${hero.id} not found`);
-      })
-    );
-  }
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/model/testing/test-heroes.ts]" value="import { Hero } from '../hero';
-
-/** return fresh array of test heroes */
-export function getTestHeroes(): Hero[] {
-  return [
-    {id: 41, name: 'Bob' },
-    {id: 42, name: 'Carol' },
-    {id: 43, name: 'Ted' },
-    {id: 44, name: 'Alice' },
-    {id: 45, name: 'Speedy' },
-    {id: 46, name: 'Stealthy' }
-  ];
-}
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="files[src/app/model/user.service.ts]" value="import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -4597,7 +4338,7 @@ export class UserService {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="files[src/app/shared/canvas.component.spec.ts]" value="import { fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+*/"><input type="hidden" name="files[src/app/shared/canvas.component.spec.ts]" value="import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { CanvasComponent } from './canvas.component';
 
@@ -4610,13 +4351,13 @@ describe('CanvasComponent', () => {
       },
     ];
   });
-  beforeEach(waitForAsync(() => {
-    TestBed
+  beforeEach(async () => {
+    await TestBed
         .configureTestingModule({
           declarations: [CanvasComponent],
         })
         .compileComponents();
-  }));
+  });
 
   it('should be able to generate blob data from canvas', fakeAsync(() => {
        const fixture = TestBed.createComponent(CanvasComponent);
@@ -4638,7 +4379,7 @@ can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="files[src/app/shared/canvas.component.ts]" value="// Import patch to make async `HTMLCanvasElement` methods (such as `.toBlob()`) Zone.js-aware.
 // Either import in `polyfills.ts` (if used in more than one places in the app) or in the component
 // file using `HTMLCanvasElement` (if it is only used in a single file).
-import 'zone.js/dist/zone-patch-canvas';
+import 'zone.js/plugins/zone-patch-canvas';
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
@@ -5079,7 +4820,7 @@ describe('TwainComponent', () => {
          expect(errorMessage()).toBeNull('should not show error');
        }));
 
-    it('should show quote after getQuote (async)', waitForAsync(() => {
+    it('should show quote after getQuote (waitForAsync)', waitForAsync(() => {
          fixture.detectChanges();  // ngOnInit()
          expect(quoteEl.textContent).toBe('...', 'should show placeholder');
 
@@ -5391,6 +5132,277 @@ export class WelcomeComponent implements OnInit {
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/model/testing/http-client.spec.ts]" value="// Http testing module and mocking controller
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
+// Other imports
+import { TestBed } from '@angular/core/testing';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
+import { HttpHeaders } from '@angular/common/http';
+
+interface Data {
+  name: string;
+}
+
+const testUrl = '/data';
+
+describe('HttpClient testing', () => {
+  let httpClient: HttpClient;
+  let httpTestingController: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ]
+    });
+
+    // Inject the http service and test controller for each test
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
+  });
+
+  afterEach(() => {
+    // After every test, assert that there are no more pending requests.
+    httpTestingController.verify();
+  });
+
+  /// Tests begin ///
+  it('can test HttpClient.get', () => {
+    const testData: Data = {name: 'Test Data'};
+
+    // Make an HTTP GET request
+    httpClient.get<Data>(testUrl)
+      .subscribe(data =>
+        // When observable resolves, result should match test data
+        expect(data).toEqual(testData)
+      );
+
+    // The following `expectOne()` will match the request's URL.
+    // If no requests or multiple requests matched that URL
+    // `expectOne()` would throw.
+    const req = httpTestingController.expectOne('/data');
+
+    // Assert that the request is a GET.
+    expect(req.request.method).toEqual('GET');
+
+    // Respond with mock data, causing Observable to resolve.
+    // Subscribe callback asserts that correct data was returned.
+    req.flush(testData);
+
+    // Finally, assert that there are no outstanding requests.
+    httpTestingController.verify();
+  });
+
+  it('can test HttpClient.get with matching header', () => {
+    const testData: Data = {name: 'Test Data'};
+
+    // Make an HTTP GET request with specific header
+    httpClient.get<Data>(testUrl, {
+        headers: new HttpHeaders({Authorization: 'my-auth-token'})
+      })
+      .subscribe(data =>
+        expect(data).toEqual(testData)
+      );
+
+    // Find request with a predicate function.
+    // Expect one request with an authorization header
+    const req = httpTestingController.expectOne(
+      request => request.headers.has('Authorization')
+    );
+    req.flush(testData);
+  });
+
+  it('can test multiple requests', () => {
+    const testData: Data[] = [
+      { name: 'bob' }, { name: 'carol' },
+      { name: 'ted' }, { name: 'alice' }
+    ];
+
+    // Make three requests in a row
+    httpClient.get<Data[]>(testUrl)
+      .subscribe(d => expect(d.length).toEqual(0, 'should have no data'));
+
+    httpClient.get<Data[]>(testUrl)
+      .subscribe(d => expect(d).toEqual([testData[0]], 'should be one element array'));
+
+    httpClient.get<Data[]>(testUrl)
+      .subscribe(d => expect(d).toEqual(testData, 'should be expected data'));
+
+    // get all pending requests that match the given URL
+    const requests = httpTestingController.match(testUrl);
+    expect(requests.length).toEqual(3);
+
+    // Respond to each request with different results
+    requests[0].flush([]);
+    requests[1].flush([testData[0]]);
+    requests[2].flush(testData);
+  });
+
+  it('can test for 404 error', () => {
+    const emsg = 'deliberate 404 error';
+
+    httpClient.get<Data[]>(testUrl).subscribe(
+      data => fail('should have failed with the 404 error'),
+      (error: HttpErrorResponse) => {
+        expect(error.status).toEqual(404, 'status');
+        expect(error.error).toEqual(emsg, 'message');
+      }
+    );
+
+    const req = httpTestingController.expectOne(testUrl);
+
+    // Respond with mock error
+    req.flush(emsg, { status: 404, statusText: 'Not Found' });
+  });
+
+  it('can test for network error', () => {
+    const emsg = 'simulated network error';
+
+    httpClient.get<Data[]>(testUrl).subscribe(
+      data => fail('should have failed with the network error'),
+      (error: HttpErrorResponse) => {
+        expect(error.error.message).toEqual(emsg, 'message');
+      }
+    );
+
+    const req = httpTestingController.expectOne(testUrl);
+
+    // Create mock ErrorEvent, raised when something goes wrong at the network level.
+    // Connection timeout, DNS error, offline, etc
+    const errorEvent = new ErrorEvent('so sad', {
+      message: emsg,
+      // The rest of this is optional and not used.
+      // Just showing that you could provide this too.
+      filename: 'HeroService.ts',
+      lineno: 42,
+      colno: 21
+    });
+
+    // Respond with mock error
+    req.error(errorEvent);
+  });
+
+  it('httpTestingController.verify should fail if HTTP response not simulated', () => {
+    // Sends request
+    httpClient.get('some/api').subscribe();
+
+    // verify() should fail because haven't handled the pending request.
+    expect(() => httpTestingController.verify()).toThrow();
+
+    // Now get and flush the request so that afterEach() doesn't fail
+    const req = httpTestingController.expectOne('some/api');
+    req.flush(null);
+  });
+
+  // Proves that verify in afterEach() really would catch error
+  // if test doesn't simulate the HTTP response.
+  //
+  // Must disable this test because can't catch an error in an afterEach().
+  // Uncomment if you want to confirm that afterEach() does the job.
+  // it('afterEach() should fail when HTTP response not simulated',() => {
+  //   // Sends request which is never handled by this test
+  //   httpClient.get('some/api').subscribe();
+  // });
+});
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/model/testing/index.ts]" value="export * from './test-hero.service';
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/model/testing/test-hero.service.ts]" value="import { Injectable } from '@angular/core';
+
+import { Observable } from 'rxjs';
+import { asyncData } from '../../../testing';
+
+import { map } from 'rxjs/operators';
+
+// re-export for tester convenience
+export { Hero } from '../hero';
+export { HeroService } from '../hero.service';
+export { getTestHeroes } from './test-heroes';
+
+import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
+import { getTestHeroes } from './test-heroes';
+
+@Injectable()
+/**
+ * FakeHeroService pretends to make real http requests.
+ * implements only as much of HeroService as is actually consumed by the app
+ */
+export class TestHeroService extends HeroService {
+
+  constructor() {
+    super(null);
+  }
+
+  heroes = getTestHeroes();
+  lastResult: Observable<any>; // result from last method call
+
+  addHero(hero: Hero): Observable<Hero> {
+    throw new Error('Method not implemented.');
+  }
+
+  deleteHero(hero: number | Hero): Observable<Hero> {
+    throw new Error('Method not implemented.');
+  }
+
+  getHeroes(): Observable<Hero[]> {
+    return this.lastResult = asyncData(this.heroes);
+  }
+
+  getHero(id: number | string): Observable<Hero> {
+    if (typeof id === 'string') {
+      id = parseInt(id, 10);
+    }
+    const hero = this.heroes.find(h => h.id === id);
+    return this.lastResult = asyncData(hero);
+  }
+
+  updateHero(hero: Hero): Observable<Hero> {
+    return this.lastResult = this.getHero(hero.id).pipe(
+      map(h => {
+        if (h) {
+          return Object.assign(h, hero);
+        }
+        throw new Error(`Hero ${hero.id} not found`);
+      })
+    );
+  }
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/"><input type="hidden" name="files[src/app/model/testing/test-heroes.ts]" value="import { Hero } from '../hero';
+
+/** return fresh array of test heroes */
+export function getTestHeroes(): Hero[] {
+  return [
+    {id: 41, name: 'Bob' },
+    {id: 42, name: 'Carol' },
+    {id: 43, name: 'Ted' },
+    {id: 44, name: 'Alice' },
+    {id: 45, name: 'Speedy' },
+    {id: 46, name: 'Stealthy' }
+  ];
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
 */"><input type="hidden" name="files[src/testing/activated-route-stub.ts]" value="// export for convenience.
 export { ActivatedRoute } from '@angular/router';
 
@@ -5413,8 +5425,8 @@ export class ActivatedRouteStub {
   /** The mock paramMap observable */
   readonly paramMap = this.subject.asObservable();
 
-  /** Set the paramMap observables's next value */
-  setParamMap(params?: Params) {
+  /** Set the paramMap observable's next value */
+  setParamMap(params: Params = {}) {
     this.subject.next(convertToParamMap(params));
   }
 }
@@ -5627,7 +5639,7 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
 
 
 /*
@@ -5822,7 +5834,7 @@ can be found in the LICENSE file at https://angular.io/license
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-import 'zone.js/dist/zone'; // Included with Angular CLI.
+import 'zone.js'; // Included with Angular CLI.
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
@@ -5833,7 +5845,35 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
-*/"><input type="hidden" name="tags[0]" value="angular"><input type="hidden" name="tags[1]" value="example"><input type="hidden" name="tags[2]" value="testing"><input type="hidden" name="description" value="Angular Example - Testing - specs"><input type="hidden" name="dependencies" value="{&quot;@angular/animations&quot;:&quot;~11.0.1&quot;,&quot;@angular/common&quot;:&quot;~11.0.1&quot;,&quot;@angular/compiler&quot;:&quot;~11.0.1&quot;,&quot;@angular/core&quot;:&quot;~11.0.1&quot;,&quot;@angular/forms&quot;:&quot;~11.0.1&quot;,&quot;@angular/platform-browser&quot;:&quot;~11.0.1&quot;,&quot;@angular/platform-browser-dynamic&quot;:&quot;~11.0.1&quot;,&quot;@angular/router&quot;:&quot;~11.0.1&quot;,&quot;angular-in-memory-web-api&quot;:&quot;~0.11.0&quot;,&quot;rxjs&quot;:&quot;~6.6.0&quot;,&quot;tslib&quot;:&quot;^2.0.0&quot;,&quot;zone.js&quot;:&quot;~0.10.3&quot;,&quot;jasmine-core&quot;:&quot;~3.6.0&quot;,&quot;jasmine-marbles&quot;:&quot;~0.6.0&quot;}"></form>
+*/"><input type="hidden" name="files[tsconfig.json]" value="{
+  &quot;compileOnSave&quot;: false,
+  &quot;compilerOptions&quot;: {
+    &quot;baseUrl&quot;: &quot;./&quot;,
+    &quot;outDir&quot;: &quot;./dist/out-tsc&quot;,
+    &quot;forceConsistentCasingInFileNames&quot;: true,
+    &quot;noImplicitReturns&quot;: true,
+    &quot;noFallthroughCasesInSwitch&quot;: true,
+    &quot;sourceMap&quot;: true,
+    &quot;declaration&quot;: false,
+    &quot;downlevelIteration&quot;: true,
+    &quot;experimentalDecorators&quot;: true,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;importHelpers&quot;: true,
+    &quot;target&quot;: &quot;es2015&quot;,
+    &quot;module&quot;: &quot;es2020&quot;,
+    &quot;lib&quot;: [
+      &quot;es2018&quot;,
+      &quot;dom&quot;
+    ]
+  },
+  &quot;angularCompilerOptions&quot;: {
+    &quot;enableI18nLegacyMessageIdFormat&quot;: false,
+    &quot;strictInjectionParameters&quot;: true,
+    &quot;strictInputAccessModifiers&quot;: true,
+    &quot;strictTemplates&quot;: true,
+    &quot;enableIvy&quot;: true
+  }
+}"><input type="hidden" name="tags[0]" value="angular"><input type="hidden" name="tags[1]" value="example"><input type="hidden" name="tags[2]" value="testing"><input type="hidden" name="description" value="Angular Example - Testing - specs"><input type="hidden" name="dependencies" value="{&quot;@angular/animations&quot;:&quot;~12.0.0&quot;,&quot;@angular/common&quot;:&quot;~12.0.0&quot;,&quot;@angular/compiler&quot;:&quot;~12.0.0&quot;,&quot;@angular/core&quot;:&quot;~12.0.0&quot;,&quot;@angular/forms&quot;:&quot;~12.0.0&quot;,&quot;@angular/platform-browser&quot;:&quot;~12.0.0&quot;,&quot;@angular/platform-browser-dynamic&quot;:&quot;~12.0.0&quot;,&quot;@angular/router&quot;:&quot;~12.0.0&quot;,&quot;angular-in-memory-web-api&quot;:&quot;~0.11.0&quot;,&quot;rxjs&quot;:&quot;~6.6.0&quot;,&quot;tslib&quot;:&quot;^2.0.0&quot;,&quot;zone.js&quot;:&quot;~0.11.4&quot;,&quot;jasmine-core&quot;:&quot;~3.7.0&quot;,&quot;jasmine-marbles&quot;:&quot;~0.6.0&quot;}"></form>
         <script>
           var embedded = 'ctl=1';
           var isEmbedded = window.location.search.indexOf(embedded) > -1;
