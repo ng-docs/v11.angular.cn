@@ -1307,6 +1307,26 @@
   ],
   "docVersions": [
     {
+      "title": "v16",
+      "url": "https://v16.angular.cn/"
+    },
+    {
+      "title": "v15",
+      "url": "https://v15.angular.cn/"
+    },
+    {
+      "title": "v14",
+      "url": "https://v14.angular.cn/"
+    },
+    {
+      "title": "v13",
+      "url": "https://v13.angular.cn/"
+    },
+    {
+      "title": "v12",
+      "url": "https://v12.angular.cn/"
+    },
+    {
       "title": "v11",
       "url": "https://v11.angular.cn/"
     },
@@ -1336,7 +1356,7 @@
     },
     {
       "title": "v4",
-      "url": "https://v4.angular.io/"
+      "url": "https://v4.angular.cn/"
     },
     {
       "title": "v2",
